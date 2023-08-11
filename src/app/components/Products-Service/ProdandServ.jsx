@@ -11,7 +11,7 @@ const ProdandServ = () => {
         </div>
         <div className="text-6xl mt-3 px-3">
           Classic Car Conversion
-          <img src="/landing_page/images/Prodserv-2.png" alt="Classic Car Conversion" className="mx-auto mt-8 overflow-hidden transition-transform duration-300 hover:scale-105" />
+          <img src="/landing_page/images/prodserv-2.png" alt="Classic Car Conversion" className="mx-auto mt-8 overflow-hidden transition-transform duration-300 hover:scale-105" />
         </div>
       </div>
     </div>
