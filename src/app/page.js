@@ -9,7 +9,7 @@ import ClassicCarConversion from './components/classiccar/classiccar.jsx';
 import AboutUS from './components/AboutUs/aboutus';
 import ProductDetail from './components/product-detail/Product-Detail';
 import ProdandServ from './components/Products-Service/ProdandServ';
-import Contactus from './components/ContactUs/contactus';
+import Contactus from './components/ContactUs/Contactus';
 
 const Home = () => {
   
