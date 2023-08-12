@@ -20,7 +20,13 @@ const Home = () => {
 
       <Hero/>
 
-      <ProdandServ/>
+      <Video/>
+
+      <Product/>
+
+      <Collab/>
+
+      <ClassicCarConversion/>
 
       {/* Footer */}
       <Footer />
