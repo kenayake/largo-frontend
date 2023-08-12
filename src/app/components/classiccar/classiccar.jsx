@@ -1,7 +1,7 @@
 import React from 'react'
 const classiccar = () => {
     return (
-      <div className="w-screen h-[674px] relative overflow-hidden mb-16">
+      <div className="w-screen h-[674px] relative overflow-hidden mb-16" id='car'>
         <div
           className="absolute top-0 left-0 w-full h-full bg-center bg-no-repeat bg-cover"
           style={{ backgroundImage: 'url("/landing_page/images/mobil.png")' }}

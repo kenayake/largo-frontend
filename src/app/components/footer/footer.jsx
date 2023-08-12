@@ -15,7 +15,7 @@ import Image from 'next/image'
 
 export default function Footer() {
     return (
-        <footer className="w-full text-white bg-black ">
+        <footer className="w-full text-white bg-black " id="footer">
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 justify-items-center">
                 <div className="order-last mb-16 md:h-max md:mb-0 xl:mb-16 md:order-first md:ml-16 md:mt-16 md:visible">
                     <Image src={Largo} alt="" className="w-[150px] h-[83px] mb-6" />

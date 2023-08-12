@@ -15,6 +15,7 @@ export default function Hero() {
       <section
         className="flex flex-col min-h-screen text-white bg-fixed bg-center bg-cover bg-blend-overlay"
         style={{ backgroundImage: `url("/landing_page/images/landingbg.JPG")` }}
+        id='hero'
       >
         {/* Overlay */}
         <div className="absolute top-0 left-0 w-full h-screen bg-black opacity-70"></div>

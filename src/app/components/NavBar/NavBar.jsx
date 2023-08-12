@@ -6,11 +6,11 @@ import { IoMenu, IoClose } from "react-icons/io5";
 import AboutUs from "../AboutUs/aboutus";
 const Nav = () => {
   let Links = [
-    { name: "HOME", link: "/" },
-    { name: "ABOUT US", link: "/../AboutUs/aboutus" },
-    { name: "PRODUCT & SERVICES", link: "/" },
+    { name: "HOME", link: "#hero" },
+    { name: "ABOUT US", link: "#video" },
+    { name: "PRODUCT & SERVICES", link: "#product" },
     // { name: "FIND A RETAILER", link: "/" },
-    { name: "CONTACT US", link: "/" },
+    { name: "CONTACT US", link: "#footer" },
   ];
   
   let [open, setOpen] = useState(false);
@@ -99,13 +99,13 @@ const Nav = () => {
               key={link.name}
               className={`text-xl font-semibold md:flex ${selectedElement === link.name ? "border-b-4 border-b-[#FF8811]" : ""} md:px-4 md:h-full md:my-0 my-7 md:items-center`} style={{ height: "72px" }}
             >
-              <button
-                // href={link.link}
+              <a
+                href={link.link}
                 className={`${selectedElement === link.name ? "text-[#FF8811]" : "text-[#DFD3BB]"} opacity-100 hover:text-gray-400 duration-500`}
                 onClick={()=>setSelectedElement(link.name)}
               >
                 {link.name}
-              </button>
+              </a>
             </li>
           ))}
         </ul>

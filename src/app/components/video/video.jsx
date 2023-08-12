@@ -1,6 +1,6 @@
 export default function Video() {
   return (
-    <section className="relative w-full h-[calc(100vh*110/100)]">
+    <section className="relative w-full h-[calc(100vh*110/100)]" id="video">
       <div className="font-medium leading-relaxed tracking-widest capitalize text-7xl text-center">
       Handcrafted E-Bike
       </div>

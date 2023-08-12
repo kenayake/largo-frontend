@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Collab() {
 
   return (
-    <section>
+    <section id="collab">
       <div className="flex flex-row items-center justify-around w-full py-10 mt-16">
         <h1 className="font-medium leading-relaxed tracking-widest capitalize text-7xl">
           Our Latest Collaboration
