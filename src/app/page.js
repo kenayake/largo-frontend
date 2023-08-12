@@ -21,15 +21,15 @@ const Home = () => {
 
       <Hero/>
 
-      {/* <Video/>
+      <Video/>
 
       <Product/>
 
       <Collab/>
 
-      <ClassicCarConversion/> */}
+      <ClassicCarConversion/>
       
-      <FindRetailer/>
+      {/* <FindRetailer/> */}
 
       {/* Footer */}
       <Footer />
