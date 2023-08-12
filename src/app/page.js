@@ -10,6 +10,7 @@ import AboutUS from './components/AboutUs/aboutus';
 import ProductDetail from './components/product-detail/Product-Detail';
 import ProdandServ from './components/Products-Service/ProdandServ';
 import Contactus from './components/ContactUs/Contactus';
+import FindRetailer from './components/Find_Retailer/FindRetailer';
 
 const Home = () => {
   
@@ -20,13 +21,15 @@ const Home = () => {
 
       <Hero/>
 
-      <Video/>
+      {/* <Video/>
 
       <Product/>
 
       <Collab/>
 
-      <ClassicCarConversion/>
+      <ClassicCarConversion/> */}
+      
+      <FindRetailer/>
 
       {/* Footer */}
       <Footer />
