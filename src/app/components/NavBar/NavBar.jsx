@@ -4,12 +4,12 @@ import logo from "./logo.png";
 import Image from 'next/image'
 import { IoMenu, IoClose } from "react-icons/io5";
 import AboutUs from "../AboutUs/aboutus";
+
 const Nav = () => {
   let Links = [
     { name: "HOME", link: "#hero" },
     { name: "ABOUT US", link: "#video" },
     { name: "PRODUCT & SERVICES", link: "#product" },
-    // { name: "FIND A RETAILER", link: "#findretailer" },
     { name: "CONTACT US", link: "#footer" },
   ];
   
@@ -20,7 +20,9 @@ const Nav = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      if (scrollPosition > 500) {
+      const windowWidth = window.innerWidth; // Get the window width
+
+      if (scrollPosition > 500 || windowWidth <= 768) { // Adjust the breakpoint as needed
         setNavbarBackground("black");
       } else {
         setNavbarBackground("transparent");
@@ -57,7 +59,7 @@ const Nav = () => {
         <ul
           className={`md:flex md:pb-0 pb-12 absolute md:static ${navbarBackground === "black" ? "bg-black" : "bg-transparent"} md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
             open ? "top-20 " : "top-[-490px]"
-          }`}
+          }`} 
         >
           {Links.map((link) => (
             <li
