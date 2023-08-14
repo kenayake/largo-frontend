@@ -2,7 +2,7 @@ import { ProductCarousel } from "./product_carousel";
 
 export default function Product() {
 
-  const images = ['image-8.png', 'image-9.png', 'uwxlargo.jpeg', 'AboutUs.png'];
+  const images = ['hxr2.png', 'HXR.png', 'HXR2.png', 'HXR1.png'];
 
   return (
     <section id="product">
