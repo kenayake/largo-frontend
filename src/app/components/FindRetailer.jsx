@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const FindRetailer = () => {
     return (
-        <section className='container min-h-screen'>
+        <section className='container min-h-screen' >
             <div className='grid grid-cols-2'>
                 <div>
 

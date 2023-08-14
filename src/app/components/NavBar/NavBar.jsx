@@ -9,7 +9,7 @@ const Nav = () => {
     { name: "HOME", link: "#hero" },
     { name: "ABOUT US", link: "#video" },
     { name: "PRODUCT & SERVICES", link: "#product" },
-    // { name: "FIND A RETAILER", link: "/" },
+    // { name: "FIND A RETAILER", link: "#findretailer" },
     { name: "CONTACT US", link: "#footer" },
   ];
   
