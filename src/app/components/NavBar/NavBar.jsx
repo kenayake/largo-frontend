@@ -39,58 +39,23 @@ const Nav = () => {
 
   return (
     <div
-      className={`w-full fixed top-0 left-0 bg-${navbarBackground} transition-all duration-300 z-50`}
+      className={`w-full fixed top-0 left-0 ${navbarBackground === "black" ? "bg-black" : "bg-transparent"} transition-all duration-300 z-50`}
     >
       <div className="justify-between bg-transparent md:items-stretch md:flex md:pl-48 px-7">
         {navbarBackground === "black" && (
           <Image src={logo} alt="Logo" className="object-cover w-24 h-12 my-2 cursor-pointer" onClick={handleScrollToTop} />
-        )
-        }
+        )}
         <div className="font-bold text-2xl font-[Oswald] text-gray-800 w-28"></div>
 
         <div
           onClick={() => setOpen(!open)}
           className="absolute text-3xl cursor-pointer right-8 top-6 md:hidden"
         >
-          {/* {!open ? (
-            <svg
-              width="23"
-              height="19"
-              viewBox="0 0 23 19"
-              fill="none"
-              // className="active:invisible"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0 0V2.71429H23V0H0ZM0 10.8571H23V8.14286H0V10.8571ZM0 19H23V16.2857H0V19Z"
-                fill="#DFD3BB"
-              />
-            </svg>
-          ) : (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-[26px] h-[26px]"
-              viewBox="0 0 512 512"
-            >
-              <path
-                fill="#DFD3BB"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="32"
-                d="M368 368L144 144M368 144L144 368"
-              />
-            </svg>
-          )} */}
-          {open
-            ? <IoClose></IoClose>
-            : <IoMenu></IoMenu>
-          }
-          {/* <ion-icon name={open ? "close" : "menu"}></ion-icon> */}
+          {open ? <IoClose /> : <IoMenu />}
         </div>
 
         <ul
-          className={`md:flex md:pb-0 pb-12 absolute md:static bg-transparent md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
+          className={`md:flex md:pb-0 pb-12 absolute md:static ${navbarBackground === "black" ? "bg-black" : "bg-transparent"} md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
             open ? "top-20 " : "top-[-490px]"
           }`}
         >
@@ -102,7 +67,7 @@ const Nav = () => {
               <a
                 href={link.link}
                 className={`${selectedElement === link.name ? "text-[#FF8811]" : "text-[#DFD3BB]"} opacity-100 hover:text-gray-400 duration-500`}
-                onClick={()=>setSelectedElement(link.name)}
+                onClick={() => setSelectedElement(link.name)}
               >
                 {link.name}
               </a>

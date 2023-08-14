@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function Collab() {
   return (
-    <section id="collab">
-      <div className="flex flex-col items-center justify-center w-full py-10 mt-16">
+    <section id="collab" >
+      <div className="flex flex-col items-center justify-center w-full py-10 mt-16 sm:-mr-5">
         <h1 className="font-medium leading-relaxed tracking-widest text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-8 text-center">
           Our Latest Collaboration
         </h1>

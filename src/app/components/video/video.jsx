@@ -1,7 +1,7 @@
 export default function Video() {
   return (
     <section className="relative w-full h-[calc(100vh*110/100)]" id="video">
-      <div className="font-medium leading-relaxed tracking-widest capitalize text-7xl text-center">
+      <div className="font-medium leading-relaxed tracking-widest capitalize text-6xl text-center">
       Handcrafted E-Bike
       </div>
       <div className="absolute inset-x-0 bottom-0 h-1/2 w-full bg-[#030A0D]" />

@@ -15,6 +15,7 @@ import FindRetailer from './components/FindRetailer';
 const Home = () => {
   
   return (
+    
     <>
       {/* Navbar */}
       <NavBar />
