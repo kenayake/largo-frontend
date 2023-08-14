@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Collab() {
   return (
     <section id="collab" >
-      <div className="flex flex-col items-center justify-center w-full py-10 mt-16 sm:-mr-5">
+      <div className="flex flex-col items-center justify-center w-full md:py-10 mt-16 sm:-mr-5">
         <h1 className="font-medium leading-relaxed tracking-widest text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-8 text-center">
           Our Latest Collaboration
         </h1>
@@ -53,7 +53,7 @@ export default function Collab() {
           <div className="absolute top-0 left-0 w-20 h-20 rounded-full bg-[#DFD3BB] peer-hover/button:bg-[#aaa18e]" />
         </button>
       </div>
-      <div className="flex content-center justify-center w-full h-screen mb-20">
+      <div className="flex content-center justify-center w-full md:h-screen mt-10 mb-20">
         <div className="relative w-fit h-fit">
           <Image
             src="/landing_page/images/uwxlargo.jpeg"

@@ -7,7 +7,7 @@ const classiccar = () => {
         className="absolute top-0 left-0 w-full h-full bg-center bg-no-repeat bg-cover sm:bg-contain"
         style={{ backgroundImage: 'url("/landing_page/images/mobil.png")' }}
       >
-        <div className="h-[30px] sm:h-[50px] absolute top-0 left-0 w-full flex justify-center items-center">
+        <div className="h-[30px] sm:h-[50px] absolute top-10 left-5 md:top-0 md:left-0 w-full flex justify-center items-center">
           <p className="font-medium leading-relaxed tracking-widest capitalize text-4xl sm:text-7xl mt-5 sm:mt-10 text-white">
             Classic Car Conversion
           </p>
