@@ -8,7 +8,10 @@ export default async function Product() {
     {
       next: { revalidate: 0 },
     }
-  ).then((res) => res.json());
+  )
+    .then((res) => res.text())
+    .then((res) => JSON.parse(res))
+    .catch((err) => [{ name: "", image: "" }]);
 
   return (
     <section id="product">
