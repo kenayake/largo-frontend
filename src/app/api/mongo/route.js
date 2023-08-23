@@ -13,6 +13,8 @@ const client = new MongoClient(uri, {
 
 export async function GET(request) {
   try {
+    await client.connect()
+    
     const productCol = client.db(process.env.DB_NAME).collection(process.env.DB_COLLECTION_NAME)
     
     const products = await productCol.find().toArray()

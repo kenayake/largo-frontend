@@ -1,9 +1,14 @@
 import { ProductCarousel } from "./product_carousel";
 
 export default async function Product() {
-  const products = await fetch(`${process.env.VERCEL_ENV==='development'?'http://':'https://'}${process.env.VERCEL_URL}/api/mongo`, {
-    next: { revalidate: 0 },
-  }).then((res) => res.json());
+  const products = await fetch(
+    `${process.env.VERCEL_ENV === "development" ? "http://" : "https://"}${
+      process.env.VERCEL_URL
+    }/api/mongo`,
+    {
+      next: { revalidate: 0 },
+    }
+  ).then((res) => res.json());
 
   return (
     <section id="product">
