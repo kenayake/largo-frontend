@@ -1,8 +1,9 @@
 import { ProductCarousel } from "./product_carousel";
 
-export default function Product() {
-
-  const images = ['HXR.png', 'HXR.png', 'HXR2.png', 'HXR1.png'];
+export default async function Product() {
+  const products = await fetch(`${process.env.VERCEL_URL}/api/mongo`, {
+    next: { revalidate: 0 },
+  }).then((res) => res.json());
 
   return (
     <section id="product">
@@ -10,7 +11,9 @@ export default function Product() {
         <p className="mb-4 text-6xl opacity-50">Check out our</p>
         <p className="text-7xl">recently added Series</p>
       </div>
-      <ProductCarousel images={images} />
+      <ProductCarousel
+        products={products.filter((product) => product.type === "ebike")}
+      />
     </section>
   );
 }
