@@ -1,5 +1,6 @@
 import './globals.css'
 import { Oswald } from 'next/font/google'
+import NavBar from './components/NavBar/NavBar';
 
 const inter = Oswald({ subsets: ['latin'] })
 
@@ -11,7 +12,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className='scroll-smooth'>
-      <body className={`${inter.className} text-[#DFD3BB] bg-[#031723]`}>{children}</body>
+      <body className={`${inter.className} text-[#DFD3BB] bg-[#031723] w-screen overflow-x-hidden`}>
+      <NavBar />
+      {children}</body>
     </html>
   )
 }

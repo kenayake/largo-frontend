@@ -1,10 +1,16 @@
+import clientPromise from "@/lib/mongo_singleton";
 import Image from "next/image";
 
-export default function Collab() {
+export default async function Collab() {
+  const client = await clientPromise
+    
+  const collabCol = client.db(process.env.DB_NAME).collection('products')
+    
+  const collabs = await collabCol.find().toArray()
   return (
-    <section id="collab" >
-      <div className="flex flex-col items-center justify-center w-full md:py-10 mt-16 sm:-mr-5">
-        <h1 className="font-medium leading-relaxed tracking-widest text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl mb-8 text-center">
+    <section id="collab">
+      <div className="flex flex-col items-center justify-center w-full mt-16 md:py-10 sm:-mr-5">
+        <h1 className="mb-8 text-4xl font-medium leading-relaxed tracking-widest text-center sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
           Our Latest Collaboration
         </h1>
         <button className="relative w-20 h-20" title="View More" type="button">
@@ -53,7 +59,7 @@ export default function Collab() {
           <div className="absolute top-0 left-0 w-20 h-20 rounded-full bg-[#DFD3BB] peer-hover/button:bg-[#aaa18e]" />
         </button>
       </div>
-      <div className="flex content-center justify-center w-full md:h-screen mt-10 mb-20">
+      <div className="flex content-center justify-center w-full mt-10 mb-20 md:h-screen">
         <div className="relative w-fit h-fit">
           <Image
             src="/landing_page/images/uwxlargo.jpeg"
@@ -62,7 +68,7 @@ export default function Collab() {
             width={(1080 * 70) / 100}
             height={(1080 * 70) / 100}
           />
-          <div className="absolute inset-0 top-0 z-10 flex flex-col justify-start w-full h-auto py-6 pl-6 space-y-6 overflow-y-auto text-xl text-center duration-300 opacity-0 peer/collab hover:opacity-100">
+          <div className="absolute inset-0 top-0 z-10 flex flex-col justify-start w-full h-[calc((1080*70)/100)] py-6 px-6 space-y-6 text-xl text-center duration-300 opacity-0 peer/collab hover:opacity-100 overflow-clip text-ellipsis">
             <p>
               Setelah resmi meluncurkan brand dan produk eBike nya April lalu,
               kini LARGO berkolaborasi dengan UNIONWELL, sebagai brand fesyen
@@ -80,12 +86,12 @@ export default function Collab() {
               ‘handcrafted’ yang sangat menarik untuk dinikmati/dimiliki.
             </p>
             <p>
-              Dengan segala nilai keunikan tersebut, project kolaborasi sepeda
-              listrik vintage ini akan di lelang pada kanal IG: @unionwell 20-23
-              Oktober 2021 pukul 23.59 WIB, sebagian hasil lelang akan di
-              donasikan. Tujuan dari pelelangan karya ini sebagai upaya edukasi
-              cinta produk lokal karya anak bangsa berkualitas
-              setinggi-tingginya
+                Dengan segala nilai keunikan tersebut, project kolaborasi sepeda
+                listrik vintage ini akan di lelang pada kanal IG: @unionwell 20-23
+                Oktober 2021 pukul 23.59 WIB, sebagian hasil lelang akan di
+                donasikan. Tujuan dari pelelangan karya ini sebagai upaya edukasi
+                cinta produk lokal karya anak bangsa berkualitas
+                setinggi-tingginya
             </p>
             <p>
               Ditengah kondisi pandemi nyatanya para pelaku UKM produk lokal

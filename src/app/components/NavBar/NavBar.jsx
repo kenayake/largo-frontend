@@ -41,7 +41,7 @@ const Nav = () => {
 
   return (
     <div
-      className={`w-full fixed top-0 left-0 ${navbarBackground === "black" ? "bg-black" : "bg-transparent"} transition-all duration-300 z-50`}
+      className={` fixed inset-x-0 top-0 ${navbarBackground === "black" ? "bg-black" : "bg-transparent"} transition-all duration-300 z-50`}
     >
       <div className="justify-between bg-transparent md:items-stretch md:flex md:pl-48 px-7">
         {navbarBackground === "black" && (

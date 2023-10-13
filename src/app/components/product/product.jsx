@@ -1,17 +1,12 @@
+import clientPromise from "@/lib/mongo_singleton";
 import { ProductCarousel } from "./product_carousel";
 
 export default async function Product() {
-  const products = await fetch(
-    `${process.env.VERCEL_ENV === "development" ? "http://" : "https://"}${
-      process.env.VERCEL_URL
-    }/api/mongo`,
-    {
-      next: { revalidate: 0 },
-    }
-  )
-    .then((res) => res.text())
-    .then((res) => JSON.parse(res))
-    .catch((err) => [{ name: "", image: "" }]);
+  const client = await clientPromise
+    
+  const productCol = client.db(process.env.DB_NAME).collection('products')
+  
+  const products = await productCol.find().toArray()
 
   return (
     <section id="product">
@@ -20,8 +15,8 @@ export default async function Product() {
         <p className="text-7xl">recently added Series</p>
       </div>
       <ProductCarousel
-        products={products.filter((product) => product.type === "ebike")}
+        products={JSON.parse(JSON.stringify(products.filter((product) => product.type === "ebike")))}
       />
-    </section>
+    </section>  
   );
 }

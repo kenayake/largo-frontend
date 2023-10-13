@@ -1,5 +1,4 @@
 // import React from 'react';
-import NavBar from './components/NavBar/NavBar';
 import Hero from './components/Hero/hero'
 import Footer from './components/footer/footer';
 import Video from './components/video/video';
@@ -18,8 +17,6 @@ const Home = () => {
     
     <>
       {/* Navbar */}
-      <NavBar />
-
       <Hero/>
 
       <Video/>

@@ -6,12 +6,12 @@ export default function Hero() {
     <>
       {/* Hero Section */}
       <section
-        className="flex flex-col min-h-screen text-white bg-fixed bg-center bg-cover bg-blend-overlay"
+        className="flex flex-col w-screen min-h-screen text-white bg-fixed bg-center bg-cover bg-blend-overlay"
         style={{
           backgroundImage: `url("/landing_page/images/landingbg.JPG")`,
-          width: "100vw", // Set width to 100% of viewport width
           backgroundSize: "cover",
         }}
+        id="hero"
       >
         {/* Overlay */}
         <div className="absolute top-0 left-0 w-full h-screen bg-black opacity-70"></div>
