@@ -1,18 +1,17 @@
 export default function Video() {
   return (
-    <section className='relative w-full h-96 md:h-[calc(100vh*110/100)] mb-28 md:mb-0' id="video">
-      <div className="mt-8 text-6xl font-medium leading-relaxed tracking-widest text-center capitalize md:mt-16"> {/* Adjusted margin-top */}
-        Handcrafted E-Bike
+    <section id="video">
+      <div className="md:pt-[15vh] px-[10%] md:pb-[10vh] font-normal leading-10 capitalize mt-32 md:mt-0 text-center">
+        <p className="text-7xl">Handcrafted E-Bike</p>
       </div>
-      <div className="absolute inset-x-0 bottom-0 h-1/2 w-full bg-[#030A0D] invisible md:visible" />
-      <div className="flex items-center content-center justify-center w-full h-full ">
+      <div className="w-full h-[200px] md:h-[525px] flex items-center justify-center my-20 md:my-0">
         <video
           src="/landing_page/video/video_largo.mp4"
           autoPlay
           loop
           controls
           muted
-          className="z-10 w-full -mt-32 md:w-9/12"
+          className="h-full max-w-full"
         />
       </div>
     </section>

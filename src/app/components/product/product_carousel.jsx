@@ -30,6 +30,7 @@ export function ProductCarousel({ products }) {
         rewind={true}
       >
         {products.map((product, index) => {
+          // console.log(product);
           return (
             <SwiperSlide
               key={index}
