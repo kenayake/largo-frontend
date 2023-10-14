@@ -39,6 +39,11 @@ const Nav = () => {
     window.scrollTo({ top:0, behavior: 'smooth'});
   }
 
+  const handleMenuItemClick = (linkName) => {
+    setSelectedElement(linkName);
+    setOpen(false);
+  }
+
   return (
     <div
       className={` fixed inset-x-0 top-0 ${navbarBackground === "black" ? "bg-black" : "bg-transparent"} transition-all duration-300 z-50`}
@@ -58,7 +63,7 @@ const Nav = () => {
 
         <ul
           className={`md:flex md:pb-0 pb-12 absolute md:static ${navbarBackground === "black" ? "bg-black" : "bg-transparent"} md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-            open ? "top-20 " : "top-[-490px]"
+            open ? "top-16 " : "top-[-490px]"
           }`} 
         >
           {Links.map((link) => (
@@ -69,7 +74,7 @@ const Nav = () => {
               <a
                 href={link.link}
                 className={`${selectedElement === link.name ? "text-[#FF8811]" : "text-[#DFD3BB]"} opacity-100 hover:text-gray-400 duration-500`}
-                onClick={() => setSelectedElement(link.name)}
+                onClick={() => handleMenuItemClick(link.name)}
               >
                 {link.name}
               </a>
