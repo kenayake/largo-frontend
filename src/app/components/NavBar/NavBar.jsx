@@ -22,7 +22,9 @@ const Nav = () => {
       const scrollPosition = window.scrollY;
       const windowWidth = window.innerWidth; // Get the window width
 
-      if (scrollPosition > 500 || windowWidth <= 768) { // Adjust the breakpoint as needed
+      if (windowWidth <= 768) {
+        setNavbarBackground("black");
+      } else if (scrollPosition > 500) {
         setNavbarBackground("black");
       } else {
         setNavbarBackground("transparent");
