@@ -6,9 +6,7 @@ import Collab from './components/collab/collab';
 import Product from './components/product/product.jsx';
 import ClassicCarConversion from './components/classiccar/classiccar.jsx';
 import AboutUS from './components/AboutUs/aboutus';
-import ProductDetail from './components/product-detail/Product-Detail';
 import ProdandServ from './components/Products-Service/ProdandServ';
-import Contactus from './components/ContactUs/Contactus';
 import FindRetailer from './components/FindRetailer';
 
 const Home = () => {

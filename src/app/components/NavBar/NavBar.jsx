@@ -15,7 +15,8 @@ const Nav = () => {
   
   let [open, setOpen] = useState(false);
   let [navbarBackground, setNavbarBackground] = useState("transparent");
-  let [selectedElement, setSelectedElement] = useState(Links[0].name);
+  let [selectedElement, setSelectedElement] = useState(false);
+  // let [selectedElement, setSelectedElement] = useState(Links[0].name);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +43,8 @@ const Nav = () => {
   }
 
   const handleMenuItemClick = (linkName) => {
-    setSelectedElement(linkName);
+    setSelectedElement(false);
+    // setSelectedElement(linkName);
     setOpen(false);
   }
 
