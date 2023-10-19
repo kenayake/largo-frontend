@@ -33,7 +33,7 @@ export function ProdCarousel({ images }) {
               rewind={true}
               onInit={() => setInit(true)}
           >
-              {images.map((element, index) => {
+              {images.length > 0 && images.map((element, index) => {
                   return (
                       <SwiperSlide
                           className="relative object-contain h-auto max-w-fit"

@@ -5,6 +5,7 @@ import { Navigation } from "swiper";
 import { useRef, useState } from "react";
 import { BiRightArrowAlt } from "react-icons/bi";
 import { useMediaQuery } from "react-responsive";
+import Link from "next/link";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -46,7 +47,7 @@ export function ProductCarousel({ products }) {
                     {product.name.replace(/\.[^/.]+$/, "")}
                   </p>
                   <button className="flex items-end text-[#ff8811] hover:underline underline-offset-2">
-                    <p className="text-xl font-medium">Read more</p>
+                    <Link className="text-xl font-medium" href={`/products/${product.name}`}>Read more</Link>
                     <BiRightArrowAlt className="w-6 h-6 ml-1" />
                   </button>
                 </div>

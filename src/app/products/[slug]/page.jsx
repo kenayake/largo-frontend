@@ -1,9 +1,15 @@
 import React from "react";
-import Image from "next/image";
+import clientPromise from "@/lib/mongo_singleton";
 import { ProdCarousel } from "./ProdCarrousel";
 import Yellowbox from "./yellowbox";
 
-const ProductDetail = () => {
+const ProductDetail = async ({ params }) => {
+  const client = await clientPromise;
+
+  const productCol = client.db(process.env.DB_NAME).collection("products");
+
+  const product = await productCol.findOne({ name: decodeURI(params.slug) });
+
   return (
     <section>
       <div className="grid md:grid-cols-2 px-[10%] pb-[10vh] mt-36 ">
@@ -14,8 +20,8 @@ const ProductDetail = () => {
             className="object-cover w-full h-full"
           />
         </div>
-        <div className="text-7xl col-span-5 md:col-span-1">
-          HXR2 Series
+        <div className="col-span-5 text-7xl md:col-span-1">
+          {product.name}
           <br />
           <div
             className="text-[#d38e0c] text-left relative w-[272px] h-[43px] -mb-20 mt-14"
@@ -28,38 +34,21 @@ const ProductDetail = () => {
             className="text-[#dfd3bb] text-left relative w-[666px] h-[455px]"
             style={{ font: "500 22px/33.5px 'Oswald', sans-serif" }}
           >
-            Powdercoat Paint
-            <br />
-            Mid Drive BLDC 48v / 960 watt
-            <br />
-            Distance Range 45 km
-            <br />
-            Handmade Vintage Frame Set
-            <br />
-            Handmade Springer Fork
-            <br />
-            Special Design Seat Suspension Features
-            <br />
-            Soft Compound Saddle
-            <br />
-            Aluminium Box Battery &amp; Controller
-            <br />
-            10” LED Headlamp
-            <br />
-            Schwalbe Fat Frank 26 x 23.5
-            <br />
-            Rim Alloy TCM Double Wall (50 mm wide)
-            <br />
-            Drum Brake for Ebike
-            <br />
-            Special Part Designed and Produce by CNC, Lassercut{" "}
+            {product.specification.map((specs) => {
+              return (
+                <>
+                  {specs}
+                  <br />
+                </>
+              );
+            })}
           </div>
         </div>
       </div>
-      
+
       <Yellowbox />
 
-      <ProdCarousel />
+      <ProdCarousel images={product.additionalImages} />
     </section>
   );
 };
