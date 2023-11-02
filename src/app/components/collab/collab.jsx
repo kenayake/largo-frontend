@@ -4,7 +4,7 @@ import Image from "next/image";
 export default async function Collab() {
   const client = await clientPromise
     
-  const collabCol = client.db(process.env.DB_NAME).collection('products')
+  const collabCol = client.db(process.env.DB_NAME).collection('collabs')
     
   const collabs = await collabCol.find().toArray()
   return (
@@ -69,49 +69,11 @@ export default async function Collab() {
             height={(1080 * 70) / 100}
           />
           <div className="absolute inset-0 top-0 z-10 flex flex-col justify-start w-full h-[calc((1080*70)/100)] py-6 px-6 space-y-6 text-xl text-center duration-300 opacity-0 peer/collab hover:opacity-100 overflow-clip text-ellipsis">
-            <p>
-              Setelah resmi meluncurkan brand dan produk eBike nya April lalu,
-              kini LARGO berkolaborasi dengan UNIONWELL, sebagai brand fesyen
-              apparel “artisan” yang desain dan illustrasi nya merupakan karya
-              dari David bayu sebagai salah satu ownernya.
-            </p>
-            <p>
-              Kolaborasi 2 brand lokal yang memiliki kesamaan dan keunikan khas
-              bergenre vintage style ini akan mewujud pada sebuah sepeda listrik
-              dan beberapa turunan fashion apparel (wind breaker, jumper
-              sweater, Tshirt, pos bag) dengan edisi sangat terbatas. Sepeda
-              listrik yang hanya di produksi 1 unit ini juga melibatkan Ilham
-              herry seniman hand lettering yang memberi sentuhan khusus ornament
-              grafis dengan material gold leaf 24k, menjadikan produk kolaborasi
-              ‘handcrafted’ yang sangat menarik untuk dinikmati/dimiliki.
-            </p>
-            <p>
-                Dengan segala nilai keunikan tersebut, project kolaborasi sepeda
-                listrik vintage ini akan di lelang pada kanal IG: @unionwell 20-23
-                Oktober 2021 pukul 23.59 WIB, sebagian hasil lelang akan di
-                donasikan. Tujuan dari pelelangan karya ini sebagai upaya edukasi
-                cinta produk lokal karya anak bangsa berkualitas
-                setinggi-tingginya
-            </p>
-            <p>
-              Ditengah kondisi pandemi nyatanya para pelaku UKM produk lokal
-              berusaha terus menghidupkan sektor industri masing-masing, Baim
-              wong sebagai salah satu owner Largo eBike pun memiliki
-              ketertarikan yang sangat kuat terhadap industri produk lokal. Baim
-              wong dan David bayu dalam projek kolaborasi ini merupakan bentuk
-              spirit tokoh selebritas mendorong roda2 kecil industri produk
-              lokal terus bergerak inovatif. Semangat kolaboratif UNIONWELL X
-              LARGO sepertinya akan berkelanjutan dengan adanya inisiasi dan
-              eksplorasi untuk karya selanjutnya yang akan dikerjakan bersama.
-            </p>
-            <p>
-              Dikemas dalam sebuah event tahunan UNIONVILLE, produk kolaborasi
-              ini akan diluncurkan pada 23-24 Oct 2021 di Mblock Space Jakarta,
-              (riding parade, fashion show, music performance, vintage market,
-              dll) merupakan konsep acara yang tentunya menarik dan memiliki
-              daya magnet tersendiri untuk di kunjungi.
-            </p>
-            <p>#lokalpride</p>
+            {collabs[0].description.map((desc=>(
+              <p>
+                {desc}
+              </p>
+            )))}
           </div>
           <div className="absolute inset-0 duration-300 bg-black opacity-0 peer-hover/collab:opacity-70"></div>
         </div>

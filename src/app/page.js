@@ -5,7 +5,7 @@ import Video from './components/video/video';
 import Collab from './components/collab/collab';
 import Product from './components/product/product.jsx';
 import ClassicCarConversion from './components/classiccar/classiccar.jsx';
-import AboutUS from './components/AboutUs/aboutus';
+import AboutUS from './about-us/page';
 import ProdandServ from './components/Products-Service/ProdandServ';
 import FindRetailer from './components/FindRetailer';
 

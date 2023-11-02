@@ -1,5 +1,6 @@
 import clientPromise from "@/lib/mongo_singleton";
-import { ProductCarousel } from "./product_carousel";
+// import { ProductCarousel } from "./product_carousel";
+import ProductList from "./product_list";
 
 export default async function Product() {
   const client = await clientPromise
@@ -14,9 +15,11 @@ export default async function Product() {
         <p className="mb-4 text-6xl opacity-50">Check out our</p>
         <p className="text-7xl">recently added Series</p>
       </div>
-      <ProductCarousel
-        products={JSON.parse(JSON.stringify(products.filter((product) => product.type === "ebike")))}
-      />
+      <div className="flex justify-center">
+        <ProductList
+          products={JSON.parse(JSON.stringify(products.filter((product) => product.type === "ebike")))}
+        />
+      </div>
     </section>  
   );
 }
