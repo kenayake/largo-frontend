@@ -14,10 +14,7 @@ const Home = () => {
   return (
     
     <>
-      {/* Navbar */}
       <Hero/>
-
-      <Video/>
 
       <Product/>
 
