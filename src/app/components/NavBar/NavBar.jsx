@@ -3,14 +3,14 @@ import React, { useState, useEffect } from "react";
 import logo from "./logo.png";
 import Image from 'next/image'
 import { IoMenu, IoClose } from "react-icons/io5";
-import AboutUs from "../AboutUs/aboutus";
+import AboutUs from "../../about-us/page";
 
 const Nav = () => {
   let Links = [
-    { name: "HOME", link: "#hero" },
-    { name: "ABOUT US", link: "#video" },
-    { name: "PRODUCT & SERVICES", link: "#product" },
-    { name: "CONTACT US", link: "#footer" },
+    { name: "HOME", link: "/" },
+    { name: "ABOUT US", link: "/about-us" },
+    { name: "PRODUCT & SERVICES", link: "/#product" },
+    { name: "CONTACT US", link: "/contact-us" },
   ];
   
   let [open, setOpen] = useState(false);

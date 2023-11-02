@@ -4,21 +4,21 @@ import Link from "next/link";
 
 export default function ProductList({ products }) {
   return (
-    <div className="grid grid-cols-2 gap-10 w-10/12 justify-items-center mx-5">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-10/12 justify-items-center mx-5">
       {products.map((product, index) => {
         return (
           <div
-            className="h-[25vw] relative w-full aspect-square"
+            className=" relative w-full aspect-video"
           >
-            <img src={product.image} className="object-cover inset-0 absolute h-full w-full" alt="" />
+            <img src={product.image} className="object-cover inset-0 absolute h-full w-full object-bottom" alt="" />
             <div className="absolute inset-x-0 bottom-0 px-6 pb-6">
-              <p className="mb-2 text-5xl font-bold leading-8 tracking-wider capitalize">
+              <p className="md:mb-2 xl:mb-4 text-2xl md:text-[2.5vw] font-bold md:leading-8 tracking-wider capitalize">
                 {product.name.replace(/\.[^/.]+$/, "")}
               </p>
               <button className="flex items-end text-[#ff8811] hover:underline underline-offset-2">
                 <Link
                   className="text-xl font-medium"
-                  href={`/products/${product.name}`}
+                  href={product.type==='ebike'?`/products/${product.name}`:'/classic-car-conversion'}
                 >
                   Read more
                 </Link>

@@ -11,13 +11,13 @@ export default async function Product() {
 
   return (
     <section id="product">
-      <div className="md:pt-[15vh] px-[10%] pb:[20px] md:pb-[10vh] font-normal leading-10 capitalize mb-10">
+      <div className="md:pt-[15vh] px-[10%] pb:[20px] md:pb-[10vh] font-normal leading-10 capitalize mb-10 pt-5">
         <p className="mb-4 text-6xl opacity-50">Check out our</p>
         <p className="text-7xl">recently added Series</p>
       </div>
       <div className="flex justify-center">
         <ProductList
-          products={JSON.parse(JSON.stringify(products.filter((product) => product.type === "ebike")))}
+          products={JSON.parse(JSON.stringify(products))}
         />
       </div>
     </section>  
