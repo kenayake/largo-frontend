@@ -11,16 +11,16 @@ const ProductDetail = async ({ params }) => {
   const product = await productCol.findOne({ name: decodeURI(params.slug) });
 
   return (
-    <section>
-      <div className="grid md:grid-cols-2 px-[10%] pb-[10vh] mt-36 ">
-        <div className="w-[620px] h-[700px] lg:w-[528px] lg:h-[620px] relative">
+    <section className="w-screen">
+      <div className="grid gap-10 md:grid-cols-2 grid-cols-1 px-[10%] pb-[10vh] mt-36">
+        <div className="w-full max-w-lg aspect-[5/6] relative">
           <img
-            src="/landing_page/images/hx2r.png"
+            src={product.image}
             alt="Image Alt Text"
             className="object-cover w-full h-full"
           />
         </div>
-        <div className="col-span-5 text-7xl md:col-span-1">
+        <div className="text-7xl md:col-span-1">
           {product.name}
           <br />
           <div
@@ -31,15 +31,15 @@ const ProductDetail = async ({ params }) => {
           </div>
           <br />
           <div
-            className="text-[#dfd3bb] text-left relative w-[666px] h-[455px]"
+            className="text-[#dfd3bb] text-left relative w-full h-[455px]"
             style={{ font: "500 22px/33.5px 'Oswald', sans-serif" }}
           >
             {product.specification.map((specs) => {
               return (
-                <>
+                <p className="mb-1.5">
                   {specs}
                   <br />
-                </>
+                </p>
               );
             })}
           </div>
