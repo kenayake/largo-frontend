@@ -80,7 +80,7 @@ const ProductDetail = async ({ params }) => {
         </div>
         <div className="h-40"></div>
         {/* <ProdCarousel images={product.additionalImages} /> */}
-        <div className="relative aspect-[7/12] w-1/6 mx-auto ">
+        <div className="relative aspect-[7/12] h-[400px] mx-auto ">
           <div className="absolute -right-3 -bottom-3 border-2 border-amber-500 border-opacity-75 border-t-0 border-l-0 w-[90%] h-[90%]"></div>
           <img
             src="/landing_page/images/prod-5.png"
