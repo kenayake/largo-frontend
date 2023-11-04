@@ -69,7 +69,7 @@ export default async function Collab() {
             height={(1080 * 70) / 100}
           />
           <div className="absolute inset-0 top-0 z-10 flex flex-col justify-start w-full h-[calc((1080*70)/100)] py-6 px-6 space-y-6 text-xl text-center duration-300 opacity-0 peer/collab hover:opacity-100 overflow-clip text-ellipsis">
-            {collabs[0].description.map((desc=>(
+            {collabs[0].description.split('\n').map((desc=>(
               <p>
                 {desc}
               </p>

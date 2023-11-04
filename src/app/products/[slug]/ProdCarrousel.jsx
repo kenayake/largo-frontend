@@ -20,7 +20,7 @@ export function ProdCarousel({ images }) {
   const nextRef = useRef(null);
 
   return (
-      <div className="relative mb-10">
+      <div className="relative my-20">
           <Swiper
               navigation={{
                   prevEl: prevRef.current,
