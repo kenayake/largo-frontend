@@ -12,19 +12,20 @@ const ProductDetail = async ({ params }) => {
 
   return (
     <section>
-      <div className="grid gap-10 md:gap-20 md:grid-cols-2 grid-cols-1 px-[10%] md:px-[5%] pb-[10vh] mt-36">
-        <div className="w-full aspect-[5/6] relative">
+      <div className="grid  md:grid-cols-12 grid-cols-1 px-[10%] pb-[15vh] mt-36">
+        <div className="w-full aspect-[5/6] relative col-span-5">
+          <div className="absolute w-full h-full -bottom-5 -right-5 bg-slate-500 bg-opacity-25 -z-10"></div>
           <img
             src={product.image}
             alt="Image Alt Text"
             className="object-cover w-full h-full"
           />
         </div>
-        <div className="md:col-span-1 flex flex-col">
-          <h1 className="text-5xl lg:text-7xl">{product.name}</h1>
+        <div className="flex flex-col col-span-5 place-self-center">
+          <h1 className="text-7xl tracking-wider">{product.name}</h1>
           {/* <br /> */}
           <div
-            className="text-[#d38e0c] text-2xl text-left relative mb-1.5 mt-7 lg:mt-14"
+            className="text-[#d38e0c] text-3xl text-left relative mb-1.5 mt-7"
             style={{ font: "'Oswald', sans-serif" }}
           >
             SPECIFICATION :
@@ -44,40 +45,13 @@ const ProductDetail = async ({ params }) => {
             })}
           </div>
         </div>
+        <div className="col-span-2">
+          <p className="font-bold text-3xl">Color Option</p>
+        </div>
       </div>
 
       <div className="relative mt-20 pb-18 bg-black bg-opacity-25 h-screen">
-        {/* Yellow Box */}
-        <div class="container bg-d38e0c py-6 w-3/4 md:w-1/2 rounded-lg shadow absolute inset-x-0 -top-28 mx-auto">
-          <div className="grid items-center justify-center md:grid-cols-3 text-center">
-            <div>
-              <img
-                src="/product_page/images/loog-1.png"
-                alt="Image 1"
-                className="mx-auto overflow-hidden transition-transform duration-300 hover:scale-105"
-              />
-              Full Charging Time <br />4 - 6 Hours
-            </div>
-            <div>
-              <img
-                src="/product_page/images/loog-2.png"
-                alt="Image 1"
-                className="mx-auto overflow-hidden transition-transform duration-300 hover:scale-105"
-              />
-              Max Speed Up To <br />
-              55 km/h
-            </div>
-            <div>
-              <img
-                src="/product_page/images/loog-3.png"
-                alt="Image 1"
-                className="mx-auto overflow-hidden transition-transform duration-300 hover:scale-105"
-              />
-              3 Months <br />
-              Battery Guarantee
-            </div>
-          </div>
-        </div>
+        <Yellowbox />
         <div className="h-40"></div>
         {/* <ProdCarousel images={product.additionalImages} /> */}
         <div className="relative aspect-[7/12] h-[400px] mx-auto ">
