@@ -1,34 +1,35 @@
 import React from "react";
 
-const Yellowbox = () => {
+const Yellowbox = ({ features }) => {
   return (
-    <div class="container bg-d38e0c py-6 w-3/4 md:w-1/2 rounded-lg shadow absolute inset-x-0 -top-28 mx-auto">
-      <div className="grid items-center justify-center grid-cols-3 text-center">
+    <div class="container bg-d38e0c py-3 md:py-6 w-[90%] md:w-1/2 rounded-lg shadow absolute inset-x-0 -top-16 md:-top-28 mx-auto">
+      <div className="grid justify-center grid-cols-3 text-center items-start">
         <div>
           <img
             src="/product_page/images/loog-1.png"
             alt="Image 1"
-            className="mx-auto overflow-hidden transition-transform duration-300 hover:scale-105"
+            className="overflow-hidden transition-transform duration-300 hover:scale-105 md:w-5/12 w-1/2 mx-auto mb-2"
           />
-          Full Charging Time <br />4 - 6 Hours
+          <p className="md:text-[1.5vw] text-white">Full Charging Time</p>
+          <p className="text-black md:text-[1.125vw]">{features.chargingTime}</p>
         </div>
         <div>
           <img
             src="/product_page/images/loog-2.png"
             alt="Image 1"
-            className="mx-auto overflow-hidden transition-transform duration-300 hover:scale-105"
+            className="overflow-hidden transition-transform duration-300 hover:scale-105 md:w-5/12 w-1/2 mb-2 mx-auto"
           />
-          Max Speed Up To <br />
-          55 km/h
+          <p className="md:text-[1.5vw] text-white">Max Speed Up To</p>
+          <p className="text-black md:text-[1.125vw]">{features.maxSpeed}</p>
         </div>
         <div>
           <img
-            src="/product_page/images/loog-3.png"
+            src="/product_page/images/mileage.png"
             alt="Image 1"
-            className="mx-auto overflow-hidden transition-transform duration-300 hover:scale-105"
+            className="overflow-hidden transition-transform duration-300 hover:scale-105 md:w-5/12 w-1/2 mb-2 mx-auto"
           />
-          3 Months <br />
-          Battery Guarantee
+          <p className="md:text-[1.5vw] text-white">Mileage</p>
+          <p className="text-black md:text-[1.125vw]">{features.mileage}</p>
         </div>
       </div>
     </div>
