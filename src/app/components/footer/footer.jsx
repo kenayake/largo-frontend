@@ -17,7 +17,7 @@ export default function Footer() {
     return (
         <footer className="w-full text-white bg-black " id="footer">
             <div className="grid grid-cols-1 overflow-x-hidden md:grid-cols-2 xl:grid-cols-5 justify-items-center">
-                <div className="order-last mb-16 md:h-max md:mb-0 xl:mb-16 md:order-first md:ml-16 md:mt-16 md:visible">
+                <div className="order-last md:order-first justify-self-center self-center mb-8 md:mb-0">
                     <Image src={Largo} alt="" className="w-[150px] h-[83px] mb-6" />
                     <div className="flex justify-between w-full p-2 space-x-6 md:space-x-4 lg:space-x-6">
                         <a href="https://www.instagram.com/largo_ebike/" target="_blank"><Image src={Instagram} alt="" /></a>
@@ -25,7 +25,7 @@ export default function Footer() {
                         <Image src={Blogger} alt="" />
                     </div>
                 </div>
-                <ul className="flex flex-col px-12 mt-16 lg:ml-12 2xl:ml-24 xl:ml-12 md:mt-16 md:px-0 xl:mb-32 md:justify-self-start">
+                <ul className="flex flex-col px-12 my-16 md:justify-self-start">
                     <li className="">
                         <h1 className="text-lg font-semibold leading-9">
                             Get to know us more
@@ -64,8 +64,8 @@ export default function Footer() {
                         </div>
                     </li>
                 </ul>
-                <div className="grid w-full grid-cols-2 col-span-3 md:grid-cols-3">
-                    <div className="mt-16 justify-self-center md:justify-self-end">
+                <div className="grid w-full grid-cols-2 md:col-span-3 md:grid-cols-3">
+                    <div className="justify-self-center xl:mb-0 mb-14 self-center md:justify-self-end">
                         <h1 className="text-2xl font-semibold leading-9 ">Company</h1>
                         <div className="space-y-2.5">
                             <p>
@@ -90,7 +90,7 @@ export default function Footer() {
                             </p>
                         </div>
                     </div>
-                    <div className="mt-16 justify-self-center">
+                    <div className="justify-self-center xl:mb-0 mb-14 self-center">
                         <h1 className="text-2xl font-semibold leading-9 ">Ride</h1>
                         <div className="space-y-2.5">
                             <p>
@@ -115,7 +115,7 @@ export default function Footer() {
                             </p>
                         </div>
                     </div>
-                    <div className="mt-16 mb-16 justify-self-center md:justify-self-start">
+                    <div className="justify-self-center xl:mb-0 mb-14 self-center md:justify-self-start">
                         <h1 className="text-2xl font-semibold leading-9 ">Find More</h1>
                         <div className="space-y-2.5">
                             <p>
