@@ -8,7 +8,7 @@ export default function ProductList({ products }) {
       {products.map((product, index) => {
         return (
           <div
-            className=" relative w-full aspect-video"
+            className={`${product.type==='car'&&"order-last"} relative w-full aspect-video`}
           >
             <img src={product.image} className="object-cover inset-0 absolute h-full w-full object-bottom" alt="" />
             <div className="absolute inset-x-0 bottom-0 px-6 pb-6">
