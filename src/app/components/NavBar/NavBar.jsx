@@ -49,16 +49,34 @@ const Nav = () => {
   };
 
   return (
-    <div className={` fixed inset-x-0 top-0  duration-300 z-50`}>
+    <div
+      className={` fixed inset-x-0 top-0 ${
+        navbarBackground === "black" ? "bg-black" : "bg-transparent"
+      } duration-300 z-50`}
+    >
       <div className="justify-between bg-transparent md:items-stretch md:flex md:pl-48 px-7">
-        {navbarBackground === "black" && (
+        {/* {navbarBackground === "black" && (
           <Image
             src={logo}
             alt="Logo"
-            className="object-cover w-24 h-12 my-2 cursor-pointer duration-300"
+            className={`object-cover w-24 h-12 my-2 cursor-pointer duration-30 ${
+              !open ? "visible" : "hidden"
+            }`}
             onClick={handleScrollToTop}
           />
-        )}
+        )} */}
+
+        {!open ? (
+          <Image
+            src={logo}
+            alt="Logo"
+            className={`object-cover w-24 h-12 my-2 cursor-pointer duration-30 ${
+              !open ? "visible" : "hidden"
+            }`}
+            onClick={handleScrollToTop}
+          />
+        ) : null}
+
         <div className="font-bold text-2xl font-[Oswald] text-gray-800 w-28"></div>
 
         <div
@@ -69,11 +87,19 @@ const Nav = () => {
         </div>
 
         <ul
-          className={`md:flex pb-0 absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 duration-300 pt-20 
+          className={`md:flex pb-0 absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 duration-300 pt-6
           md:pt-0 bg-black md:bg-transparent ${
             open ? "top-0" : "top-[-490px]"
           }`}
         >
+          {open ? (
+            <Image
+              src={logo}
+              alt="Logo"
+              className={`object-cover w-24 h-12 mb-7 cursor-pointer duration-300 `}
+            />
+          ) : null}
+
           {Links.map((link) => (
             <li
               key={link.name}
@@ -81,8 +107,8 @@ const Nav = () => {
                 selectedElement === link.name
                   ? "border-b-4 border-b-[#FF8811]"
                   : ""
-              } md:px-4 md:h-full md:my-0 my-7 md:items-center`}
-              style={{ height: "72px" }}
+              } md:px-4 md:h-full my-3 md:items-center`}
+              style={{ height: "52px" }}
             >
               <a
                 href={link.link}
