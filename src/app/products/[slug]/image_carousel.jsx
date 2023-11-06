@@ -27,12 +27,16 @@ export function ImageCarousel({ images }) {
         }}
         slidesPerView={"1"}
         modules={[Navigation]}
-        spaceBetween={50}
+        spaceBetween={25}
         rewind={true}
         onInit={() => setInit(true)}
         breakpoints={{
           768: {
             slidesPerView: 4,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 50
           },
           1280: {
             slidesPerView: 4,
