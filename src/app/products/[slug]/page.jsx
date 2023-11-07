@@ -107,7 +107,7 @@ const ProductDetail = async ({ params }) => {
               ))}
             </div>
           </div>
-          <div className="space-y-3 w-max flex flex-col">
+          <div className="space-y-3 w-max flex flex-col order-first md:order-last">
             <p className="font-bold md:text-[2vw] text-[2.5vh] tracking-wider">
               Buy Now!
             </p>
