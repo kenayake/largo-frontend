@@ -68,28 +68,6 @@ export function ImageCarousel({ images }) {
             );
           })}
       </Swiper>
-      {/* <button className="absolute top-[47%] md:left-[5%]" ref={prevRef} type="button">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="35"
-          height="45"
-          fill="none"
-          viewBox="0 0 35 45"
-        >
-          <path fill="#D38E0C" d="M35 .625v43.75L.625 22.5 35 .625Z" />
-        </svg>
-      </button>
-      <button className="absolute top-[47%] md:right-[5%]" ref={nextRef} type="b">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="35"
-          height="45"
-          fill="none"
-          viewBox="0 0 35 45"
-        >
-          <path fill="#D38E0C" d="M0 44.375V.625L34.375 22.5 0 44.375Z" />
-        </svg>
-      </button> */}
       <button className="absolute top-[47%] left-[2%] md:left-[5%] z-20" ref={prevRef} type="button">
         <svg
           xmlns="http://www.w3.org/2000/svg"
