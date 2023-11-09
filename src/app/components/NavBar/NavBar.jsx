@@ -20,7 +20,7 @@ const Nav = () => {
   let [open, setOpen] = useState(false);
   let [navbarBackground, setNavbarBackground] = useState("transparent");
   let [selectedElement, setSelectedElement] = useState(false);
-  const isMobile = useMediaQuery({ maxWidth: 768 })
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   // let [selectedElement, setSelectedElement] = useState(Links[0].name);
 
   useEffect(() => {
@@ -29,23 +29,24 @@ const Nav = () => {
 
   useEffect(() => {
     if (isMobile) {
-      setNavbarBackground("black")
+      setNavbarBackground("black");
     } else {
-      setNavbarBackground("transparent")
+      setNavbarBackground("transparent");
     }
-  }, [isMobile])
-  
+  }, [isMobile]);
+
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const windowWidth = window.innerWidth; // Get the window width
+      const scrollPosition = window.scrollY; // Get the window width
 
-      if (windowWidth <= 768) {
-        setNavbarBackground("black");
-      } else if (scrollPosition > 500) {
+      if (isMobile) {
         setNavbarBackground("black");
       } else {
-        setNavbarBackground("transparent");
+        if (scrollPosition > 500) {
+          setNavbarBackground("black");
+        } else {
+          setNavbarBackground("transparent");
+        }
       }
     };
 
@@ -76,9 +77,7 @@ const Nav = () => {
       } duration-300 z-50`}
     >
       <div
-        className={`justify-between bg-transparent md:items-stretch md:flex md:pl-48 px-7 ${
-          pathname == !"/" ? "bg-black" : "bg-transparent"
-        }`}
+        className={`justify-between bg-transparent md:items-stretch md:flex md:pl-48 px-7`}
       >
         {!open ? (
           <Image
