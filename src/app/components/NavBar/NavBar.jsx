@@ -6,6 +6,7 @@ import { IoMenu, IoClose } from "react-icons/io5";
 import AboutUs from "../../about-us/page";
 
 import { usePathname } from "next/navigation";
+import { useMediaQuery } from "react-responsive";
 
 const Nav = () => {
   let Links = [
@@ -19,6 +20,7 @@ const Nav = () => {
   let [open, setOpen] = useState(false);
   let [navbarBackground, setNavbarBackground] = useState("transparent");
   let [selectedElement, setSelectedElement] = useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 768 })
   // let [selectedElement, setSelectedElement] = useState(Links[0].name);
 
   useEffect(() => {
@@ -26,11 +28,19 @@ const Nav = () => {
   }, [pathname]);
 
   useEffect(() => {
+    if (isMobile) {
+      setNavbarBackground("black")
+    } else {
+      setNavbarBackground("transparent")
+    }
+  }, [isMobile])
+  
+  useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const windowWidth = window.innerWidth; // Get the window width
 
-      if (windowWidth <= 1024) {
+      if (windowWidth <= 768) {
         setNavbarBackground("black");
       } else if (scrollPosition > 500) {
         setNavbarBackground("black");
