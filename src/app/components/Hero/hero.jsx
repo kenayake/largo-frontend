@@ -6,7 +6,7 @@ export default function Hero() {
     <>
       {/* Hero Section */}
       <section
-        className="flex flex-col w-screen min-h-screen text-white bg-fixed bg-center bg-cover bg-blend-overlay"
+        className="flex flex-col w-screen min-h-screen text-white bg-fixed bg-center bg-cover bg-blend-overlay relative"
         style={{
           backgroundImage: `url("/landing_page/images/landingbg.JPG")`,
           backgroundSize: "cover",
