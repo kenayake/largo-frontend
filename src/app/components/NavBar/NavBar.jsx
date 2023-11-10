@@ -1,9 +1,12 @@
-'use client'
+"use client";
 import React, { useState, useEffect } from "react";
 import logo from "./logo.png";
-import Image from 'next/image'
+import Image from "next/image";
 import { IoMenu, IoClose } from "react-icons/io5";
 import AboutUs from "../../about-us/page";
+
+import { usePathname } from "next/navigation";
+import { useMediaQuery } from "react-responsive";
 
 const Nav = () => {
   let Links = [
@@ -12,23 +15,38 @@ const Nav = () => {
     { name: "PRODUCT & SERVICES", link: "/#product" },
     { name: "CONTACT US", link: "/contact-us" },
   ];
-  
+  let pathname = usePathname();
+
   let [open, setOpen] = useState(false);
   let [navbarBackground, setNavbarBackground] = useState("transparent");
   let [selectedElement, setSelectedElement] = useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 768 });
   // let [selectedElement, setSelectedElement] = useState(Links[0].name);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const windowWidth = window.innerWidth; // Get the window width
+    console.log(`Route changed to: ${pathname}`);
+  }, [pathname]);
 
-      if (windowWidth <= 768) {
-        setNavbarBackground("black");
-      } else if (scrollPosition > 500) {
+  useEffect(() => {
+    if (isMobile) {
+      setNavbarBackground("black");
+    } else {
+      setNavbarBackground("transparent");
+    }
+  }, [isMobile]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY; // Get the window width
+
+      if (isMobile) {
         setNavbarBackground("black");
       } else {
-        setNavbarBackground("transparent");
+        if (scrollPosition > 500) {
+          setNavbarBackground("black");
+        } else {
+          setNavbarBackground("transparent");
+        }
       }
     };
 
@@ -39,23 +57,39 @@ const Nav = () => {
   }, []);
 
   const handleScrollToTop = () => {
-    window.scrollTo({ top:0, behavior: 'smooth'});
-  }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const handleMenuItemClick = (linkName) => {
     setSelectedElement(false);
     // setSelectedElement(linkName);
     setOpen(false);
-  }
+  };
 
   return (
     <div
-      className={` fixed inset-x-0 top-0 ${navbarBackground === "black" ? "bg-black" : "bg-transparent"} transition-all duration-300 z-50`}
+      className={`fixed inset-x-0 top-0  ${
+        pathname === "/"
+          ? navbarBackground === "black"
+            ? "bg-black"
+            : "bg-transparent"
+          : "bg-black"
+      } duration-300 z-50`}
     >
-      <div className="justify-between bg-transparent md:items-stretch md:flex md:pl-48 px-7">
-        {navbarBackground === "black" && (
-          <Image src={logo} alt="Logo" className="object-cover w-24 h-12 my-2 cursor-pointer" onClick={handleScrollToTop} />
-        )}
+      <div
+        className={`justify-between bg-transparent md:items-stretch md:flex md:pl-48 px-7`}
+      >
+        {!open ? (
+          <Image
+            src={logo}
+            alt="Logo"
+            className={`object-cover w-24 h-12 my-2 cursor-pointer duration-30 ${
+              !open ? "visible" : "hidden"
+            }`}
+            onClick={handleScrollToTop}
+          />
+        ) : null}
+
         <div className="font-bold text-2xl font-[Oswald] text-gray-800 w-28"></div>
 
         <div
@@ -66,18 +100,35 @@ const Nav = () => {
         </div>
 
         <ul
-          className={`md:flex md:pb-0 pb-12 absolute md:static ${navbarBackground === "black" ? "bg-black" : "bg-transparent"} md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${
-            open ? "top-16 " : "top-[-490px]"
-          }`} 
+          className={`md:flex items-center pb-0 absolute md:static md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 duration-300 pt-6
+          md:pt-0 bg-black md:bg-transparent ${
+            open ? "top-0" : "top-[-490px]"
+          }`}
         >
+          {open ? (
+            <Image
+              src={logo}
+              alt="Logo"
+              className={`object-cover w-24 h-12 mb-7 cursor-pointer duration-300 `}
+            />
+          ) : null}
+
           {Links.map((link) => (
             <li
               key={link.name}
-              className={`text-xl font-semibold md:flex ${selectedElement === link.name ? "border-b-4 border-b-[#FF8811]" : ""} md:px-4 md:h-full md:my-0 my-7 md:items-center`} style={{ height: "72px" }}
+              className={`h-[52px] whitespace-nowrap text-xl font-semibold md:flex ${
+                selectedElement === link.name
+                  ? "border-b-4 border-b-[#FF8811]"
+                  : ""
+              } md:px-4 md:h-full my-3 md:items-center `}
             >
               <a
                 href={link.link}
-                className={`${selectedElement === link.name ? "text-[#FF8811]" : "text-[#DFD3BB]"} opacity-100 hover:text-gray-400 duration-500`}
+                className={`${
+                  selectedElement === link.name
+                    ? "text-[#FF8811]"
+                    : "text-[#DFD3BB]"
+                } opacity-100 hover:text-gray-400 duration-300`}
                 onClick={() => handleMenuItemClick(link.name)}
               >
                 {link.name}
