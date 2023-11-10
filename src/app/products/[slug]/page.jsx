@@ -111,8 +111,8 @@ const ProductDetail = async ({ params }) => {
             <p className="font-bold md:text-[2vw] text-[2.5vh] tracking-wider">
               Buy Now!
             </p>
-            <ShopButton name={"WhatsApp"} icon={whatsappIcon} />
-            <ShopButton name={"Instagram"} icon={instagramIcon} />
+            <ShopButton name={"WhatsApp"} icon={whatsappIcon} link={`https://wa.me/628129995349?text=I'm%20interested%20in%20your%20car%20for%20sale`} />
+            <ShopButton name={"Instagram"} icon={instagramIcon} link={'https://www.instagram.com/largo_ebike/'} />
             <ShopButton name={"Email"} icon={emailIcon} />
           </div>
         </div>
