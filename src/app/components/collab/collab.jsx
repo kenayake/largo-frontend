@@ -21,8 +21,8 @@ const NewsCard = () => (
       ligula consectetur, ultrices mauris.
     </p>
 
-    <button className="w-[180px] h-[60px] rounded-[7px] border-[1.5px] border-[#FF8811] mt-[68px] ml-[178px]">
-      <p className="font-[Oswald] font-bold text-[20px]/[20px] text-[#FF8811]">
+    <button className="w-[130px] h-[40px] rounded-[7px] border-[1.5px] border-[#FF8811] mt-[38px] ml-auto">
+      <p className="font-[Oswald] font-bold text-[16px] text-[#FF8811]">
         Read More &gt;
       </p>
     </button>
@@ -36,8 +36,8 @@ const CollabCardOne = () => (
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
       Aliquam in hendrerit urna.
     </p>
-    <button className="w-[154px] h-[60px] rounded-[7px] border-[1.5px] border-[#FF8811]">
-      <p className="font-[Oswald] font-bold text-[20px]/[20px] text-[#FF8811]">
+    <button className="w-[130px] h-[40px] rounded-[7px] border-[1.5px] border-[#FF8811]">
+      <p className="font-[Oswald] font-bold text-[16px] text-[#FF8811]">
         Visit Site
       </p>
     </button>
@@ -51,8 +51,8 @@ const CollabCard = () => (
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
       Aliquam in hendrerit urna.
     </p>
-    <button className="w-[154px] h-[60px] rounded-[7px] border-[1.5px] border-[#FF8811]">
-      <p className="font-[Oswald] font-bold text-[20px]/[20px] text-[#FF8811]">
+    <button className="w-[130px] h-[40px] rounded-[7px] border-[1.5px] border-[#FF8811]">
+      <p className="font-[Oswald] font-bold text-[16px] text-[#FF8811]">
         Visit Site
       </p>
     </button>
@@ -68,17 +68,15 @@ export default function latestnews() {
         Latest News
       </p>
 
-      <div className={`flex flex-row gap-x-[60px] justify-center`}>
+      <div className={`flex flex-col gap-x-[60px] gap-y-[30px] items-center mb-3 md:flex-row md:items-center md:mb-36 md:w-10/12 md:mx-auto md:place-content-between`}>
         <NewsCard />
         <NewsCard />
         <NewsCard />
       </div>
 
-      <div className="flex flex-row gap-x-[155px] justify-center mt-[49px] items-center mb-[47px]">
-        <p className="font-[Oswald] font-medium text-[58px]/[90px] tracking-[4%]  text-white">
-          Our <br />
-          Latest <br />
-          Collaboration
+      <div className="flex flex-col gap-x-20 gap-y-[30px] justify-center mt-[49px] items-center mb-[47px] md:flex-row md:w-10/12 md:mx-auto xl:gap-x-[110px] xl:place-content-between">
+        <p className="font-[Oswald] font-medium text-[60px]/[90px] tracking-[4%]  text-white flex text-center  md:text-left md:text-[40px]/[90px] lg:text-[60px]/[90px] xl:max-w-[300px]">
+          Our Latest Collaboration
         </p>
         <CollabCardOne />
         <CollabCard />
