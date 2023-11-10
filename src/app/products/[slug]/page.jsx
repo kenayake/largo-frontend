@@ -3,13 +3,16 @@ import clientPromise from "@/lib/mongo_singleton";
 import { ImageCarousel } from "./image_carousel";
 import Yellowbox from "./yellowbox";
 import ShopButton from "./shop_buttons";
+import { getProducts } from "@/lib/firebase/get_document";
 
 const ProductDetail = async ({ params }) => {
-  const client = await clientPromise;
+  // const client = await clientPromise;
 
-  const productCol = client.db(process.env.DB_NAME).collection("products");
+  // const productCol = client.db(process.env.DB_NAME).collection("products");
 
-  const product = await productCol.findOne({ name: decodeURI(params.slug) });
+  // const product = await productCol.findOne({ name: decodeURI(params.slug) });
+
+  const [product, exists] = await getProducts({ productId: decodeURI(params.slug) })
 
   const whatsappIcon = (
     <svg
@@ -102,7 +105,7 @@ const ProductDetail = async ({ params }) => {
               {product.colorOptions.map((option) => (
                 <div
                   className="w-12 h-12 rounded-full"
-                  style={{ backgroundColor: `#${option.colorCode}` }}
+                  style={{ backgroundColor: `#${option}` }}
                 ></div>
               ))}
             </div>
