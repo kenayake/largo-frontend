@@ -2,12 +2,11 @@ import React from "react";
 import Image from "next/image";
 
 const NewsCard = () => (
-  <div className="flex flex-col">
+  <div className="flex flex-col justify-center">
     <img
       src="/landing_page/images/ilustrasi-tangan.jpeg"
       alt=""
-      width={358}
-      height={212}
+      class="w-full h-full"
     />
     <p className="font-[Oswald] font-light text-[15px]/[26px] tracking-[2%] text-white/[.37] mt-6">
       Thursday, 31 June 2023
@@ -15,7 +14,7 @@ const NewsCard = () => (
     <p className="font-[Oswald] font-normal text-[28px]/[47.5px] text-white mb-1">
       Lorem Ipsum Dolor Sit Amet
     </p>
-    <p className="font-[Oswald] font-light text-[16px]/[26px] tracking-[2%] text-justify text-white/50 max-w-[358px]">
+    <p className="font-[Oswald] font-light text-[16px]/[26px] tracking-[2%] text-justify text-white/50 w-auto">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
       Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis
       ligula consectetur, ultrices mauris.
@@ -59,16 +58,16 @@ const CollabCard = () => (
   </div>
 );
 
-export default function latestnews() {
+export default function LatestNews() {
   return (
-    <section>
+    <section className="mx-auto"> {/* Added mx-auto to center the entire section */}
       <hr className="w-[222px] border-[3px] border-[#FF8811] mx-auto mb-[46px] mt-[97px]" />
 
       <p className="font-[Oswald] font-medium text-[60px]/[90px] tracking-[4%] text-white text-center mb-[72px]">
         Latest News
       </p>
 
-      <div className={`flex flex-col gap-x-[60px] gap-y-[30px] items-center mb-3 md:flex-row md:items-center md:mb-36 md:w-10/12 md:mx-auto md:place-content-between`}>
+      <div className={`flex flex-col justify-center gap-10 w-10/12 mx-auto md:flex-row md:items-center md:mb-36 md:w-10/12 md:mx-auto md:place-content-between`}>
         <NewsCard />
         <NewsCard />
         <NewsCard />
