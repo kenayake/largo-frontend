@@ -13,7 +13,7 @@ const Nav = () => {
     { name: "HOME", link: "/" },
     { name: "ABOUT US", link: "/about-us" },
     { name: "PRODUCT & SERVICES", link: "/#product" },
-    { name: "NEWS & COLLAB", link: "/newscollab" },
+    { name: "NEWS & COLLAB", link: "/news" },
   ];
   let pathname = usePathname();
 
