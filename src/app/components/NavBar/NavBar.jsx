@@ -3,10 +3,9 @@ import React, { useState, useEffect } from "react";
 import logo from "./logo.png";
 import Image from "next/image";
 import { IoMenu, IoClose } from "react-icons/io5";
-import AboutUs from "../../about-us/page";
-
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useMediaQuery } from "react-responsive";
+import Link from "next/link";
 
 const Nav = () => {
   let Links = [
@@ -16,16 +15,19 @@ const Nav = () => {
     { name: "CONTACT US", link: "/contact-us" },
   ];
   let pathname = usePathname();
-
+  let router = useRouter();
   let [open, setOpen] = useState(false);
   let [navbarBackground, setNavbarBackground] = useState("transparent");
-  let [selectedElement, setSelectedElement] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 768 });
-  // let [selectedElement, setSelectedElement] = useState(Links[0].name);
+  let [selectedElement, setSelectedElement] = useState(false);
 
-  useEffect(() => {
-    console.log(`Route changed to: ${pathname}`);
-  }, [pathname]);
+  useEffect(
+    () =>
+      setSelectedElement(
+        Links.find((val) => val.link === pathname + window.location.hash).name
+      ),
+    []
+  );
 
   useEffect(() => {
     if (isMobile) {
@@ -60,9 +62,10 @@ const Nav = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleMenuItemClick = (linkName) => {
-    setSelectedElement(false);
-    // setSelectedElement(linkName);
+  const handleMenuItemClick = (event, link) => {
+    // event.preventDefault()
+    router.push(link.link);
+    setSelectedElement(link.name);
     setOpen(false);
   };
 
@@ -122,17 +125,17 @@ const Nav = () => {
                   : ""
               } md:px-4 md:h-full my-3 md:items-center `}
             >
-              <a
-                href={link.link}
+              <button
+                // href={link.link}
                 className={`${
                   selectedElement === link.name
                     ? "text-[#FF8811]"
                     : "text-[#DFD3BB]"
                 } opacity-100 hover:text-gray-400 duration-300`}
-                onClick={() => handleMenuItemClick(link.name)}
+                onClick={(event) => handleMenuItemClick(event, link)}
               >
                 {link.name}
-              </a>
+              </button>
             </li>
           ))}
         </ul>
