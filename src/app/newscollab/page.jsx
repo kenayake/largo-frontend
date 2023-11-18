@@ -31,17 +31,17 @@ const FeaturedNewsSlider = () => {
     <div className="relative">
       <Swiper {...swiperParams}>
         <SwiperSlide>
-          <Link href="/news/detail/1">
+          <Link href="/news/[slug]" as="/news/news-list-card">
             <img
               src="/landing_page/images/ilustrasi-tangan.jpeg"
               alt=""
               className="w-[100vw] md:w-[100vw] md:h-[60vh] object-cover"
             />
             <div className="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-50 text-white">
-              <p className="font-normal text-xl mb-2">
+              <p className="font-[Oswald] font-normal text-xl mb-2">
                 Lorem Ipsum Dolor Sit Ametaaa
               </p>
-              <p className="font-light text-xs mb-1">
+              <p className="font-[Oswald] font-light text-xs mb-1">
                 Thursday, 31 June 2023
               </p>
             </div>
@@ -55,10 +55,10 @@ const FeaturedNewsSlider = () => {
               className="w-[100vw] md:w-[100vw] md:h-[60vh] object-cover"
             />
             <div className="absolute bottom-0 left-0 right-0 p-4 bg-black bg-opacity-50 text-white">
-              <p className="font-normal text-xl mb-2">
+              <p className="font-[Oswald] font-normal text-xl mb-2">
                 Lorem Ipsum Dolor Sit Ametaaa
               </p>
-              <p className="font-light text-xs mb-1">
+              <p className="font-[Oswald] font-light text-xs mb-1">
                 Thursday, 31 June 2023
               </p>
             </div>
@@ -75,24 +75,24 @@ const NewsListCard = () => (
       <Link href="/news/[slug]" as="/news/news-list-card">
         <img
           src="/landing_page/images/ilustrasi-tangan.jpeg"
-          className="w-[150px] h-[100px] rounded md:w-[22vw] md:h-[17vh] lg:w-[11vw] lg:h-[19vh] object-cover"
+          className="w-[150px] h-[100px] md:w-[17vw] md:h-[10vw] object-cover"
         />
       </Link>
       <div className="ml-5 flex flex-col">
-        <p className="font-light text-xs tracking-[2%] text-white/[.37] mt-1">
-          John Smith - 31 June 2023
-        </p>
         <Link href="/news/[slug]" as="/news/news-list-card">
-          <p className="font-normal text-sm text-justify text-white md:text-base lg:text-xl xl">
-            Lorem Ipsum Dolor Sit
+          <p className="font-[Oswald] font-normal text-sm text-justify text-white md:text-base lg:text-xl">
+            Lorem Ipsum Dolor Sit Ametaaa
           </p>
         </Link>
-        <p className=" font-light text-xs tracking-[2%] text-justify text-white/50 mb-1 mt-1 lg:text-sm">
+        <p className="font-[Oswald] font-light text-xs tracking-[2%] text-white/[.37] mt-1">
+          Thursday, 31 June 2023
+        </p>
+        <p className="font-[Oswald] font-light text-xs tracking-[2%] text-justify text-white/50 mb-1 mt-1 lg:text-sm">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
         <Link href="/news/[slug]" as="/news/news-list-card">
           <button className="ml-auto">
-            <p className="justify-end items-center font-bold text-sm text-[#FF8811] underline md:mt-[1vh] lg:mt-[1vh]">
+            <p className="font-[Oswald] justify-end items-center font-bold text-sm text-[#FF8811] underline md:mt-[1vh] lg:mt-[5vh]">
               Read More
             </p>
           </button>
@@ -103,22 +103,22 @@ const NewsListCard = () => (
 );
 
 const CollabCard = () => (
-  <div className="flex mb-10 md:w-[48%]">
+  <div className="flex justify-between mb-10 md:w-[48%]">
     <img
       src="/landing_page/images/unionwell.jfif"
       alt=""
-      className="w-[150px] h-[100px] md:w-[10vw] md:h-[10vw] rounded"
+      className="w-[150px] h-[100px] md:w-[10vw] md:h-[10vw]"
     />
     <div className="ml-5 flex flex-col">
-      <p className="font-normal text-sm text-justify text-white md:text-base lg:text-xl">
+      <p className="font-[Oswald] font-normal text-sm text-justify text-white md:text-base lg:text-xl">
         Largo x UNIONWELL
       </p>
-      <p className="font-light text-xs text-justify tracking-[2%] text-white/50 lg:mb-[4vh]">
+      <p className="font-[Oswald] font-light text-xs text-justify tracking-[2%] text-white/50 lg:mb-[4vh]">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.
         Aliquam in hendrerit urna.
       </p>
       <button className="ml-auto">
-        <p className="justify-end items-center font-bold text-sm text-[#FF8811] underline lg:mt-[5vh]">
+        <p className="font-[Oswald] justify-end items-center font-bold text-sm text-[#FF8811] underline lg:mt-[5vh]">
           Visit Site
         </p>
       </button>
@@ -131,15 +131,13 @@ const NewsCollab = () => {
     <section className="mx-auto">
       <div className="w-10/12 mx-auto">
         <div className="pb-[5vh] font-normal mt-20 mb-1">
-          <h1 className="mb-1 text-xl text-[#FF8811] lg:text-3xl">
+          <h1 className="mb-4 text-xl text-[#FF8811] lg:text-3xl">
             Featured news
           </h1>
-          <hr className="w-[100%] mb-4 h-0.5 mx-auto bg-[#D38E0C] border-0 md:my-3" />
           <FeaturedNewsSlider />
         </div>
         <div className="font-normal mt-1">
-          <h1 className="mb-1 text-xl text-[#FF8811] lg:text-3xl">All News</h1>
-          <hr className="w-[100%] mb-4 h-0.5 mx-auto bg-[#D38E0C] border-0 md:my-3" />
+          <h1 className="mb-5 text-xl text-[#FF8811] lg:text-3xl">All News</h1>
           <div className="flex-row justify-between md:flex flex-wrap">
             <NewsListCard />
             <NewsListCard />
@@ -154,10 +152,9 @@ const NewsCollab = () => {
           </div>
         </div>
         <div className="pb-[10vh] font-normal mt-2 mb-10">
-          <h1 className="mb-1 text-xl text-[#FF8811] lg:text-3xl lg:mt-9">
+          <h1 className="mb-4 text-xl text-[#FF8811] lg:text-3xl lg:mt-9 lg:mb-9">
             All Collaborations
           </h1>
-          <hr className="w-[100%] mb-4 h-0.5 mx-auto bg-[#D38E0C] border-0 md:my-3" />
           <div className="flex justify-between md:flex flex-wrap">
             <CollabCard />
             <CollabCard />
