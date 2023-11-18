@@ -1,13 +1,16 @@
 import clientPromise from "@/lib/mongo_singleton";
 // import { ProductCarousel } from "./product_carousel";
 import ProductList from "./product_list";
+import { getProducts } from "@/lib/firebase/get_document";
 
 export default async function Product() {
-  const client = await clientPromise
+  // const client = await clientPromise
     
-  const productCol = client.db(process.env.DB_NAME).collection('products')
+  // const productCol = client.db(process.env.DB_NAME).collection('products')
   
-  const products = await productCol.find().toArray()
+  // const products = await productCol.find().toArray()
+
+  const [products, exists] = await getProducts()
 
   return (
     <section id="product">
