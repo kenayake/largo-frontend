@@ -75,7 +75,7 @@ const NewsListCard = () => (
       <Link href="/news/[slug]" as="/news/news-list-card">
         <img
           src="/landing_page/images/ilustrasi-tangan.jpeg"
-          className="w-[150px] h-[100px] rounded md:w-[22vw] md:h-[17vh] lg:w-[11vw] lg:h-[19vh] object-cover"
+          className="w-[150px] h-[100px] rounded md:w-[22vw] md:h-[17vh] xl:w-[11vw] lg:h-[19vh] object-cover"
         />
       </Link>
       <div className="ml-5 flex flex-col">
