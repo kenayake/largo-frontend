@@ -24,7 +24,7 @@ const Nav = () => {
   useEffect(
     () =>
       setSelectedElement(
-        Links.find((val) => val.link === pathname + window.location.hash).name
+        Links.find((val) => val.link === pathname + window.location.hash)?.name ?? false
       ),
     []
   );
