@@ -28,6 +28,8 @@
   },
   "devDependencies": {
     "@types/eslint": "^8.44.2",
-    "@types/react-color": "^3.0.10"
+    "@types/lodash": "^4.14.202",
+    "@types/react-color": "^3.0.10",
+    "lodash": "^4.17.21"
   }
 }

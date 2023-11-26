@@ -1,49 +1,40 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   useForm,
   useFieldArray,
   useController,
   Controller,
+  useWatch,
 } from "react-hook-form";
 import { SketchPicker } from "react-color";
 import ColorPicker from "./components/colorpicker";
+import EbikeArrayFields from "./components/arrayfield";
 
 export default function Page() {
   const {
     register,
+    unregister,
     handleSubmit,
     formState: { errors },
     control,
   } = useForm();
-  const {
-    fields: specFields,
-    append: appendSpec,
-    remove: removeSpec,
-  } = useFieldArray({
+  const type = useWatch({
     control,
-    name: "specification",
-    rules: {
-      required: true,
-    },
+    name: "type",
   });
-  const {
-    fields: colorFields,
-    append: appendColor,
-    remove: removeColor,
-  } = useFieldArray({
-    control,
-    name: "colorOptions",
-    rules: {
-      required: true,
-    },
-  });
+
+  useEffect(() => {
+    type !== "ebike" &&
+      unregister(["productName", "colorOptions", "additionalImages"], {
+        keepValue: true,
+      });
+  }, [type]);
 
   const onSubmit = (data) => console.log(data);
-  console.log(errors);
 
   return (
-    <div className="my-48 mx-20">
+    <div className="my-48 mx-20 bg-slate-700">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
           <input
@@ -57,11 +48,6 @@ export default function Page() {
           )}
         </div>
 
-        <select {...register("Type", { required: true })}>
-          <option value="ebike">E-bike</option>
-          <option value="car">Car</option>
-        </select>
-
         <div>
           <input type="file" id="" {...register("image", { required: true })} />
           {errors.image?.type === "required" && (
@@ -70,61 +56,76 @@ export default function Page() {
         </div>
 
         <div>
-          <p>
-            Specification{" "}
-            <button type="button" onClick={() => appendSpec({ value: "" })}>
-              Add
-            </button>
-          </p>
-          {specFields.map((field, index) => (
-            <div key={field.id}>
-              <input
-                {...register(`specification.${index}.value`, {
-                  required: true,
-                })}
-              />
-              <button type="button" onClick={() => removeSpec(index)}>
-                Delete
-              </button>
-              {errors.specification?.[index]?.value?.type === "required" && (
-                <p role="alert">Value required</p>
-              )}
-            </div>
-          ))}
-          {errors.specification?.length === 0 && (
-            <p>At least one specification is required</p>
+          <label htmlFor="type">Type</label>
+          <select id="type" {...register("type", { required: true })}>
+            <option value="" className="hidden"></option>
+            <option value="ebike">E-bike</option>
+            <option value="car">Car</option>
+          </select>
+          {errors.type?.type === "required" && (
+            <p role="alert">Select a product type</p>
           )}
         </div>
 
-        <div>
-          <p>
-            Color Options{" "}
-            <button type="button" onClick={() => appendColor({ color: "" })}>
-              Add
-            </button>
-          </p>
-          {colorFields.map((field, index) => (
-            <div key={field.id}>
-              <Controller
-                control={control}
-                name={`colorOptions.${index}.color`}
-                rules={{required:true}}
-                render={({ field: { onChange, onBlur, value, ref } }) => (
-                  <ColorPicker value={value} onChange={onChange} />
-                )}
-              />
-              <button type="button" onClick={() => removeColor(index)}>
-                Delete
-              </button>
-              {errors.colorOptions?.[index]?.value?.type === "required" && (
-                <p role="alert">Color required</p>
+        {type === "ebike" && (
+          <>
+            <EbikeArrayFields
+              control={control}
+              name={"specification"}
+              errors={errors}
+              required
+              render={(name, index) => (
+                <input
+                  {...register(`${name}.${index}.value`, {
+                    required: true,
+                  })}
+                />
               )}
+            />
+            <EbikeArrayFields
+              control={control}
+              name={"colorOptions"}
+              errors={errors}
+              required
+              render={(name, index, control) => (
+                <Controller
+                  control={control}
+                  name={`${name}.${index}.value`}
+                  rules={{ required: true }}
+                  render={({ field: { onChange, value } }) => (
+                    <ColorPicker value={value} onChange={onChange} />
+                  )}
+                />
+              )}
+            />
+            <EbikeArrayFields
+              control={control}
+              name={"additionalImages"}
+              errors={errors}
+              render={(name, index) => (
+                <input
+                  type="file"
+                  {...register(`${name}.${index}.value`, {
+                    required: true,
+                  })}
+                />
+              )}
+            />
+            <div>
+              <label htmlFor="chargingTime">Charging Time</label>
+              <input type="text" id="chargingTime" {...register("chargingTime", { required: true, maxLength: 80 })} />
             </div>
-          ))}
-          {errors.colorOptions?.length === 0 && (
-            <p>At least one color is required</p>
-          )}
-        </div>
+            <div>
+              <label htmlFor="maxSpeed">Max Speed</label>
+              <input type="text" id="maxSpeed" {...register("maxSpeed", { required: true, maxLength: 80 })} />
+            </div>
+            <div>
+              <label htmlFor="mileage">Charging Time</label>
+              <input type="text" id="mileage" {...register("mileage", { required: true, maxLength: 80 })} />
+            </div>
+          </>
+        )}
+
         <button type="submit" className="border rounded-lg px-2 py-1">
           Submit
         </button>

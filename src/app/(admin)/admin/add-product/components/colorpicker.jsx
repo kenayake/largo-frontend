@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { SketchPicker } from "react-color";
+
 export default function ColorPicker({ value, onChange }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -8,17 +9,20 @@ export default function ColorPicker({ value, onChange }) {
         <div
           className="w-4 h-4 rounded-sm"
           onClick={() => setIsOpen(!isOpen)}
-          style={{background: value}}
+          style={{ background: value }}
         ></div>
       </button>
       {isOpen && (
         <>
-            <div className="absolute inset-0" onClick={()=>setIsOpen(false)}></div>
-            <SketchPicker
-              className="absolute"
-              color={value}
-              onChangeComplete={(color) => onChange(color.hex)}
-            />
+          <div
+            className="absolute inset-0"
+            onClick={() => setIsOpen(false)}
+          ></div>
+          <SketchPicker
+            className="absolute"
+            color={value}
+            onChange={(color) => onChange(color.hex)}
+          />
         </>
       )}
     </>
