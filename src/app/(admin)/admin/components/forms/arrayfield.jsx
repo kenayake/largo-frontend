@@ -2,7 +2,7 @@ import { startCase } from "lodash";
 import React from "react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 
-export default function EbikeArrayFields({
+export default function ArrayFields({
   control,
   name,
   displayName = "",
@@ -19,7 +19,7 @@ export default function EbikeArrayFields({
   });
 
   return (
-    <div>
+    <div key={name}>
       <p>
         {displayName || startCase(name) + " "}
         <button type="button" onClick={() => append({ value: "" })}>
@@ -28,13 +28,15 @@ export default function EbikeArrayFields({
       </p>
       {fields.map((field, index) => (
         <div key={field.id}>
-          {render(name, index, control)}
+          <div className="inline">
+          </div>
+            {render(name, index, control)}
           <button type="button" onClick={() => remove(index)}>
             Delete
           </button>
-          {errors[name]?.[index]?.value?.type === "required" && (
-            <p role="alert">Value required</p>
-          )}
+            {errors[name]?.[index]?.value?.type === "required" && (
+              <p role="alert">Value required</p>
+            )}
         </div>
       ))}
       {errors[name]?.length === 0 && (

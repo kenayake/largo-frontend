@@ -9,12 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "autoprefixer": "10.4.14",
     "eslint": "^8.37.0",
     "firebase": "^10.5.2",
     "mongodb": "^5.1.0",
     "next": "^13.5.6",
-    "postcss": "8.4.24",
     "react": "^18.2.0",
     "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
@@ -23,13 +21,15 @@
     "react-id-swiper": "^4.0.0",
     "react-responsive": "^9.0.2",
     "sharp": "^0.32.4",
-    "swiper": "^9.4.1",
-    "tailwindcss": "3.3.2"
+    "swiper": "^9.4.1"
   },
   "devDependencies": {
     "@types/eslint": "^8.44.2",
     "@types/lodash": "^4.14.202",
     "@types/react-color": "^3.0.10",
-    "lodash": "^4.17.21"
+    "autoprefixer": "^10.4.14",
+    "lodash": "^4.17.21",
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2"
   }
 }

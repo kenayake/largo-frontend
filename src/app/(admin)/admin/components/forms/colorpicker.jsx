@@ -15,11 +15,11 @@ export default function ColorPicker({ value, onChange }) {
       {isOpen && (
         <>
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 z-40"
             onClick={() => setIsOpen(false)}
           ></div>
           <SketchPicker
-            className="absolute"
+            className="absolute z-50"
             color={value}
             onChange={(color) => onChange(color.hex)}
           />
