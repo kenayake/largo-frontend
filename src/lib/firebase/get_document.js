@@ -8,6 +8,7 @@ import {
   Timestamp,
   orderBy,
   limit,
+  query
 } from "firebase/firestore";
 
 export async function getProducts({ productId = null } = {}) {
@@ -31,15 +32,11 @@ export async function getProducts({ productId = null } = {}) {
   }
 }
 
-export async function getNews({ newsId = null } = {}) {
-  const currentTimestamp = Timestamp.fromDate(new Date());
-  console.log(currentTimestamp);
+export async function getNews({ newsId = null, max = null } = {}) {
 
   const firestoreInstance = getFirestore(firebaseInstance);
 
-  const newsCollection = collection(firestoreInstance, "news").orderBy(
-    "uploadDate"
-  );
+  const newsCollection = collection(firestoreInstance, "news")
 
   if (newsId) {
     const newsReference = doc(newsCollection, newsId);
@@ -47,6 +44,15 @@ export async function getNews({ newsId = null } = {}) {
     const newsSnapshot = await getDoc(newsReference);
 
     return [newsSnapshot.data(), newsSnapshot.exists()];
+  } else if (max) {
+    const newsQuery = query(newsCollection, orderBy("uploadDate","desc"), limit(max))
+
+    const newsQuerySnapshot = await getDocs(newsQuery)
+
+    return [
+      newsQuerySnapshot.docs.map((news) => news.data()),
+      !newsQuerySnapshot.empty,
+    ];
   } else {
     const allNewsSnapshot = await getDocs(newsCollection);
 

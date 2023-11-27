@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { getNews } from "@/lib/firebase/get_document";
 import moment from "moment/moment";
+import Link from "next/link";
 
 const CollabCardOne = () => (
   <div className="flex flex-col w-[259.2px] h-[445px] items-center">
@@ -56,7 +57,7 @@ const NewsCard = (news) => {
 };
 
 const LatestNews = async () => {
-  const [news, exists] = await getNews({});
+  const [news, exists] = await getNews({ max: 3 });
 
   return (
     <section className="mx-auto">
