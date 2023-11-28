@@ -9,6 +9,7 @@ export default function Select({ name, register, options, handleError }) {
         placeholder=""
         {...register}
         className="block py-2.5 px-0 w-full bg-transparent border-0 border-b-2 appearance-none border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 peer [&>option]:bg-black [&>option]:p-4"
+        defaultValue=""
       >
         {options}
       </select>

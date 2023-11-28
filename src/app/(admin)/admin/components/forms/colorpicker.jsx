@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { SketchPicker } from "react-color";
 
-export default function ColorPicker({ value, onChange }) {
+export default function ColorPicker({ labelText, value, onChange }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
+      <label className="block mb-2 text-[75%] text-gray-400" htmlFor={name}>
+        {labelText}
+      </label>
       <button className="p-1 bg-slate-100 rounded-sm">
         <div
           className="w-4 h-4 rounded-sm"
           onClick={() => setIsOpen(!isOpen)}
-          style={{ background: value }}
+          style={{ background: value||"#000000" }}
         ></div>
       </button>
       {isOpen && (

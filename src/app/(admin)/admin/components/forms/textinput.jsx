@@ -3,7 +3,7 @@ import React from "react";
 
 export default function TextInput({ name, register, handleError }) {
   return (
-    <div className="relative z-0">
+    <div className="relative z-0 w-full">
       <input
         type="text"
         id={name}

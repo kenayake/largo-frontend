@@ -8,6 +8,8 @@ export default function ArrayFields({
   displayName = "",
   errors,
   render,
+  handleError,
+  className,
   required = false,
 }) {
   const { fields, append, remove } = useFieldArray({
@@ -19,28 +21,28 @@ export default function ArrayFields({
   });
 
   return (
-    <div key={name}>
-      <p>
+    <div key={name} className={`space-y-5 ${className}`}>
+      <p className="w-full flex justify-between text-lg">
         {displayName || startCase(name) + " "}
-        <button type="button" onClick={() => append({ value: "" })}>
+        <button type="button" onClick={() => append({ value: "" })} className="text-base">
           Add
         </button>
       </p>
       {fields.map((field, index) => (
-        <div key={field.id}>
-          <div className="inline">
+          <div key={field.id} className="flex space-x-5">
+            <div className="w-full">
+              {render(name, index, control)}
+              {handleError(errors[name]?.[index]?.value?.type)}
+            </div>
+            <button type="button" onClick={() => remove(index)}>
+              Delete
+            </button>
           </div>
-            {render(name, index, control)}
-          <button type="button" onClick={() => remove(index)}>
-            Delete
-          </button>
-            {errors[name]?.[index]?.value?.type === "required" && (
-              <p role="alert">Value required</p>
-            )}
-        </div>
       ))}
       {errors[name]?.length === 0 && (
-        <p>At least one {displayName || startCase(name)} is required</p>
+        <p role="alert" className="text-xs text-red-400">
+          At least one {displayName || startCase(name)} is required
+        </p>
       )}
     </div>
   );
