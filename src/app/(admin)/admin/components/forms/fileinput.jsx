@@ -2,7 +2,7 @@ import React from "react";
 
 export default function FileInput({ labelText, name, register, handleError }) {
   return (
-    <>
+    <div>
         <div className="border-b-2 pb-2 pt-2.5 border-gray-600 relative">
           <label className="text-[75%] text-gray-400 absolute -top-3" htmlFor={name}>
             {labelText}
@@ -15,6 +15,6 @@ export default function FileInput({ labelText, name, register, handleError }) {
           />
         </div>
           {handleError}
-    </>
+    </div>
   );
 }
