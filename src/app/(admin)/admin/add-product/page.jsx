@@ -13,42 +13,52 @@ import ArrayFields from "../components/forms/arrayfield";
 import TextInput from "../components/forms/textinput";
 import Select from "../components/forms/select";
 import FileInput from "../components/forms/fileinput";
+import { uploadImage } from "@/lib/firebase/upload_image";
+import { addEbike } from "@/lib/firebase/add_document";
 
 export default function AddProductForm() {
   const {
     register,
     unregister,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     control,
-  } = useForm({ shouldUnregister: true });
+  } = useForm();
   const type = useWatch({
     control,
     name: "type",
   });
 
   const onSubmit = async (data) => {
-    const formData = new FormData();
-    formData.append("image", data.image[0]);
-    data = {...data, image: data.image[0].name }
-    if (data.type==="ebike") {
-      for (const image of data.additionalImages) {
-        formData.append("additionalImages", image.value[0]);
-      }
-      data = {...data, additionalImages: data.additionalImages.map((val)=>val.value[0].name) }
-      data = {
-        ...data,
-        specification: data.specification.map((val) => val.value),
-        colorOptions: data.colorOptions.map((val) => val.value),
-      };
+    switch (data.type) {
+      case "ebike":
+        await addEbike(data);
+        break;
+
+      default:
+        // Testing stuff
+        await new Promise((r) => setTimeout(r, 2000));
+        const error = Math.round(Math.random());
+        // if (error) throw "error";
+        break;
     }
-    formData.append("data", JSON.stringify(data));
-    const response = await fetch(
-      `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/add-product`,
-      { method: "POST", body: formData }
-    );
   };
   console.log(errors);
+
+  useEffect(() => {
+    if (isSubmitting) console.log("Submitting...");
+    else console.log("done Submitting")
+  }, [isSubmitting]);
+
+  useEffect(() => {
+    if (type !== "ebike")
+      unregister([
+        "specification",
+        "additionalFeatures",
+        "additionalImages",
+        "colorOptions",
+      ],{keepValues: true});
+  }, [type]);
 
   return (
     <div className="my-[10%] mx-[10%] ">
@@ -112,7 +122,8 @@ export default function AddProductForm() {
                     maxLength: 80,
                   })}
                   handleError={
-                    errors.productName?.type === "required" && (
+                    errors.additionalFeatures?.chargingTime?.type ===
+                      "required" && (
                       <p role="alert" className="text-xs text-red-400">
                         Charging Time is required
                       </p>
@@ -126,7 +137,8 @@ export default function AddProductForm() {
                     maxLength: 80,
                   })}
                   handleError={
-                    errors.productName?.type === "required" && (
+                    errors.additionalFeatures?.maxSpeed?.type ===
+                      "required" && (
                       <p role="alert" className="text-xs text-red-400">
                         Max Speed is required
                       </p>
@@ -140,7 +152,7 @@ export default function AddProductForm() {
                     maxLength: 80,
                   })}
                   handleError={
-                    errors.productName?.type === "required" && (
+                    errors.additionalFeatures?.mileage?.type === "required" && (
                       <p role="alert" className="text-xs text-red-400">
                         Mileage is required
                       </p>
@@ -224,7 +236,7 @@ export default function AddProductForm() {
           </>
         )}
 
-        <button type="submit" className="border rounded-lg px-2 py-1 mt-5">
+        <button type="submit" className="border rounded-lg px-2 py-1 mt-5" disabled={isSubmitting}>
           Submit
         </button>
       </form>
