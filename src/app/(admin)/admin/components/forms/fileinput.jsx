@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function FileInput({ labelText, name, register, handleError }) {
+export default function FileInput({ labelText, name, accept, register, handleError }) {
   return (
     <div>
         <div className="border-b-2 pb-2 pt-2.5 border-gray-600 relative">
@@ -11,6 +11,7 @@ export default function FileInput({ labelText, name, register, handleError }) {
             type="file"
             id={name}
             className="file:rounded file:border-0 file:bg-gray-400 file:mr-2"
+            accept={accept}
             {...register}
           />
         </div>

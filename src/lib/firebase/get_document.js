@@ -48,3 +48,4 @@ export async function getNews({ newsId = null } = {}) {
     ];
   }
 }
+

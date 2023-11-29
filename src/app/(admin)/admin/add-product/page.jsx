@@ -27,7 +27,27 @@ export default function AddProductForm() {
     name: "type",
   });
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    const formData = new FormData();
+    formData.append("image", data.image[0]);
+    data = {...data, image: data.image[0].name }
+    if (data.type==="ebike") {
+      for (const image of data.additionalImages) {
+        formData.append("additionalImages", image.value[0]);
+      }
+      data = {...data, additionalImages: data.additionalImages.map((val)=>val.value[0].name) }
+      data = {
+        ...data,
+        specification: data.specification.map((val) => val.value),
+        colorOptions: data.colorOptions.map((val) => val.value),
+      };
+    }
+    formData.append("data", JSON.stringify(data));
+    const response = await fetch(
+      `http://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/add-product`,
+      { method: "POST", body: formData }
+    );
+  };
   console.log(errors);
 
   return (
@@ -38,7 +58,7 @@ export default function AddProductForm() {
       >
         <TextInput
           name={"productName"}
-          register={register("productName", { required: true, maxLength: 80 })}
+          register={register("name", { required: true, maxLength: 80 })}
           handleError={
             errors.productName?.type === "required" && (
               <p role="alert" className="text-xs text-red-400">
@@ -52,6 +72,7 @@ export default function AddProductForm() {
           labelText={"Product Image"}
           name={"image"}
           register={register("image", { required: true })}
+          accept={"image/*"}
           handleError={
             errors.image?.type === "required" && (
               <p role="alert" className="text-xs text-red-400">
@@ -86,7 +107,7 @@ export default function AddProductForm() {
               <div className="md:col-span-3 space-y-5">
                 <TextInput
                   name={"chargingTime"}
-                  register={register("chargingTime", {
+                  register={register("additionalFeatures.chargingTime", {
                     required: true,
                     maxLength: 80,
                   })}
@@ -100,7 +121,7 @@ export default function AddProductForm() {
                 />
                 <TextInput
                   name={"maxSpeed"}
-                  register={register("maxSpeed", {
+                  register={register("additionalFeatures.maxSpeed", {
                     required: true,
                     maxLength: 80,
                   })}
@@ -114,7 +135,7 @@ export default function AddProductForm() {
                 />
                 <TextInput
                   name={"mileage"}
-                  register={register("mileage", {
+                  register={register("additionalFeatures.mileage", {
                     required: true,
                     maxLength: 80,
                   })}
@@ -185,6 +206,7 @@ export default function AddProductForm() {
                   <FileInput
                     labelText={`Additional Image ${index + 1}`}
                     name={name}
+                    accept={"image/*"}
                     register={register(`${name}.${index}.value`, {
                       required: true,
                     })}
