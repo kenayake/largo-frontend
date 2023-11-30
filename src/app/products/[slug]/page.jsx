@@ -108,7 +108,7 @@ const ProductDetail = async ({ params }) => {
               {product.colorOptions.map((option) => (
                 <div
                   className="w-12 h-12 rounded-full"
-                  style={{ backgroundColor: `#${option}` }}
+                  style={{ backgroundColor: option }}
                 ></div>
               ))}
             </div>
@@ -134,7 +134,7 @@ const ProductDetail = async ({ params }) => {
 
       <div className="relative pt-28 md:pb-16 mt-16 lg:pt-[20vh] bg-black bg-opacity-25">
         <Yellowbox features={product.additionalFeatures} />
-        <ImageCarousel images={product.additionalImages} />
+        {product.additionalImages && <ImageCarousel images={product.additionalImages} />}
       </div>
     </section>
   );
