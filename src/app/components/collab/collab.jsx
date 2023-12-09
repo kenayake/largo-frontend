@@ -12,9 +12,7 @@ const CollabCardOne = () => (
       Aliquam in hendrerit urna.
     </p>
     <button className="w-[130px] h-[40px] rounded-[7px] border-[1.5px] border-[#FF8811]">
-      <p className="font-bold text-[16px] text-[#FF8811]">
-        Visit Site
-      </p>
+      <p className="font-bold text-[16px] text-[#FF8811]">Visit Site</p>
     </button>
   </div>
 );
@@ -27,9 +25,7 @@ const CollabCard = () => (
       Aliquam in hendrerit urna.
     </p>
     <button className="w-[130px] h-[40px] rounded-[7px] border-[1.5px] border-[#FF8811]">
-      <p className="font-bold text-[16px] text-[#FF8811]">
-        Visit Site
-      </p>
+      <p className="font-bold text-[16px] text-[#FF8811]">Visit Site</p>
     </button>
   </div>
 );
@@ -75,7 +71,7 @@ const LatestNews = async () => {
         })}
       </div>
       <div className={"w-10/12 flex justify-end items-center mx-auto"}>
-        <Link  href='/newscollab'>
+        <Link href="/newscollab">
           <button>
             <p className="font-bold text-xl text-[#FF8811] underline underline-offset-auto">
               See all news

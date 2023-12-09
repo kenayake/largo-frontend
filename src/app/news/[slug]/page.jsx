@@ -1,5 +1,7 @@
 // pages/news/[slug].jsx
 import React from "react";
+import { getNews } from "@/lib/firebase/get_document";
+import moment from "moment/moment";
 
 const RelatedCard = () => (
   <div>
@@ -22,7 +24,15 @@ const RelatedCard = () => (
   </div>
 );
 
-export default function NewsDetail() {
+export default async function NewsDetail({ params }) {
+  const [news, exists] = await getNews({
+    newsId: decodeURI(params.slug),
+  });
+
+  // const [news, exists] = await getNews();
+  // console.log(params);
+  // console.log(Object.assign({}, ...news));
+
   return (
     <>
       <div className="w-10/12 mx-auto flex flex-col pb-5 lg:flex-row">
@@ -33,23 +43,23 @@ export default function NewsDetail() {
               Trending
             </div>
             <p className="text-white font-bold text-xl md:text-3xl pt-1 md:pt-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
+              {news.title}
             </p>
             <div className="flex flex-row mt-4 justify-between md:mt-3">
               <div className="text-sm">Written by John Smith</div>
-              <div className="text-sm">10 Nov 2023, 20:54</div>
+              <div className="text-sm">
+                {/* {moment(news.uploadDate.toDate().toUTCString()).format("LLL")} */}
+              </div>
             </div>
           </div>
 
           <div className="flex flex-col md:flex-col mt-8">
             <div className="w-full md:w-[100%]">
-              <div
+              <img
+                src={news.image}
+                alt=""
                 className="w-full h-[30vh] bg-cover bg-center rounded mb-4 md:mb-2 object-cover md:h-[50vh]"
-                style={{
-                  backgroundImage:
-                    "url('https://images.squarespace-cdn.com/content/v1/521c2182e4b0d492d86e62ff/1677620189606-L8KZYICWKJ2D121ULRW1/lfapnzaqqfszwebay8i3.jpg?format=1500w')",
-                }}
-              ></div>
+              />
             </div>
             <div className="flex justify-center items-center w-full md:w-100">
               <p className="text-white text-sm opacity-50 text-center">
@@ -62,56 +72,60 @@ export default function NewsDetail() {
           <hr className="w-[40vw] h-1 mx-auto my-4 bg-[#D38E0C] border-0 rounded md:my-3" />
 
           <p className="text-white text-sm font-light text-justify md:text-base">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            cursus cursus libero, nec eleifend libero tincidunt sit amet. Mauris
-            molestie lorem in justo dignissim fringilla. Ut luctus, nulla eget
-            ultricies fermentum, est mi tristique augue, sed placerat arcu urna
-            in dolor. Sed facilisis risus id diam rutrum pellentesque. Cras vel
-            enim non enim lacinia commodo et sed metus. Vestibulum quis interdum
-            velit. Phasellus finibus, velit et dignissim sollicitudin, justo
-            ligula iaculis velit, vel vehicula nulla ex vel lectus. Nullam
-            maximus eget dolor ullamcorper porta. Vivamus dolor tortor, finibus
-            quis accumsan et, euismod non mi. Aenean efficitur eros ac mauris
-            vehicula rhoncus. Vestibulum felis dolor, pretium sollicitudin mi
-            posuere, ornare facilisis eros. Aliquam eget maximus elit. Nulla
-            purus est, ornare non tempor ut, egestas eget dui. Pellentesque
-            habitant morbi tristique senectus et netus et malesuada fames ac
-            turpis egestas. Suspendisse pulvinar turpis cursus diam sollicitudin
-            facilisis.
-            <br /> <br />
-            Etiam luctus volutpat nulla, sed volutpat nulla facilisis a. Sed
-            quis convallis dolor. Fusce ornare ligula et sapien volutpat
-            porttitor. Integer in massa massa. Suspendisse felis nulla,
-            fermentum quis mauris vulputate, rhoncus lobortis eros. Vestibulum
-            sodales mi cursus bibendum malesuada. Curabitur varius imperdiet
-            orci, a gravida urna. Fusce in volutpat dui. Vestibulum elementum,
-            diam elementum euismod pharetra, erat purus ornare lacus, sed
-            sollicitudin elit urna eget enim. Aliquam sit amet tempor libero.
-            Vivamus eu luctus orci. Praesent vitae egestas lectus. Vestibulum
-            commodo odio quis iaculis blandit. Cras molestie porttitor libero eu
-            tincidunt. Ut vehicula et ex ac porttitor. Aenean hendrerit
-            elementum viverra.
-            <br /> <br />
-            Proin vel sem id magna tempus posuere. Curabitur ornare eget nulla
-            sed fermentum. Nunc malesuada velit tortor, nec sodales libero
-            volutpat vel. Fusce nisl magna, posuere in neque vestibulum, sodales
-            vulputate arcu. Curabitur dolor eros, tristique nec nunc a, sodales
-            congue leo. Donec congue fermentum iaculis. Donec vel dolor lorem.
-            Suspendisse vulputate vulputate sem a ullamcorper. Fusce posuere
-            nunc at maximus aliquam. Pellentesque placerat placerat suscipit.
-            Nam nec aliquam lorem.
+            {news.description}
+            {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Phasellus cursus cursus libero, nec eleifend libero tincidunt
+                sit amet. Mauris molestie lorem in justo dignissim fringilla. Ut
+                luctus, nulla eget ultricies fermentum, est mi tristique augue,
+                sed placerat arcu urna in dolor. Sed facilisis risus id diam
+                rutrum pellentesque. Cras vel enim non enim lacinia commodo et
+                sed metus. Vestibulum quis interdum velit. Phasellus finibus,
+                velit et dignissim sollicitudin, justo ligula iaculis velit, vel
+                vehicula nulla ex vel lectus. Nullam maximus eget dolor
+                ullamcorper porta. Vivamus dolor tortor, finibus quis accumsan
+                et, euismod non mi. Aenean efficitur eros ac mauris vehicula
+                rhoncus. Vestibulum felis dolor, pretium sollicitudin mi
+                posuere, ornare facilisis eros. Aliquam eget maximus elit. Nulla
+                purus est, ornare non tempor ut, egestas eget dui. Pellentesque
+                habitant morbi tristique senectus et netus et malesuada fames ac
+                turpis egestas. Suspendisse pulvinar turpis cursus diam
+                sollicitudin facilisis.
+                <br /> <br />
+                Etiam luctus volutpat nulla, sed volutpat nulla facilisis a. Sed
+                quis convallis dolor. Fusce ornare ligula et sapien volutpat
+                porttitor. Integer in massa massa. Suspendisse felis nulla,
+                fermentum quis mauris vulputate, rhoncus lobortis eros.
+                Vestibulum sodales mi cursus bibendum malesuada. Curabitur
+                varius imperdiet orci, a gravida urna. Fusce in volutpat dui.
+                Vestibulum elementum, diam elementum euismod pharetra, erat
+                purus ornare lacus, sed sollicitudin elit urna eget enim.
+                Aliquam sit amet tempor libero. Vivamus eu luctus orci. Praesent
+                vitae egestas lectus. Vestibulum commodo odio quis iaculis
+                blandit. Cras molestie porttitor libero eu tincidunt. Ut
+                vehicula et ex ac porttitor. Aenean hendrerit elementum viverra.
+                <br /> <br />
+                Proin vel sem id magna tempus posuere. Curabitur ornare eget
+                nulla sed fermentum. Nunc malesuada velit tortor, nec sodales
+                libero volutpat vel. Fusce nisl magna, posuere in neque
+                vestibulum, sodales vulputate arcu. Curabitur dolor eros,
+                tristique nec nunc a, sodales congue leo. Donec congue fermentum
+                iaculis. Donec vel dolor lorem. Suspendisse vulputate vulputate
+                sem a ullamcorper. Fusce posuere nunc at maximus aliquam.
+                Pellentesque placerat placerat suscipit. Nam nec aliquam lorem. */}
           </p>
         </div>
         <div className="lg:w-1/4 w-full lg:mt-[11vh] ">
-            <h1 className="text-xl text-[#FF8811] mt-7 mb-2 lg:text-[2vw]">Related News</h1>
-            <hr className="w-[100%] mb-4 h-0.5 mx-auto bg-[#D38E0C] border-0 md:my-3 " />
-            <div className="gap-y-4 grid lg:gap-y-7">
-              <RelatedCard />
-              <RelatedCard />
-              <RelatedCard />
-              <RelatedCard />
-              <RelatedCard />
-            </div>
+          <h1 className="text-xl text-[#FF8811] mt-7 mb-2 lg:text-[2vw]">
+            Related News
+          </h1>
+          <hr className="w-[100%] mb-4 h-0.5 mx-auto bg-[#D38E0C] border-0 md:my-3 " />
+          <div className="gap-y-4 grid lg:gap-y-7">
+            <RelatedCard />
+            <RelatedCard />
+            <RelatedCard />
+            <RelatedCard />
+            <RelatedCard />
+          </div>
         </div>
       </div>
     </>
