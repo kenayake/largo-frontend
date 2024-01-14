@@ -31,6 +31,7 @@ const CollabCard = () => (
 );
 
 const NewsCard = (news) => {
+  console.log(news)
   return (
     <div className="flex flex-col justify-center">
       <img src={news.image} alt="" class="w-full h-full" />
@@ -43,11 +44,11 @@ const NewsCard = (news) => {
       <p className="font-[Oswald] font-light text-[16px]/[26px] tracking-[2%] text-justify text-white/50 w-auto">
         {news.shortDescription}
       </p>
-      <button className="w-[130px] h-[40px] rounded-[7px] border-[1.5px] border-[#FF8811] mt-[38px] ml-auto">
-        <p className="font-[Oswald] font-bold text-[16px] text-[#FF8811]">
-          Read More &gt;
-        </p>
-      </button>
+      <Link href={"news/"+news.title} className="w-[130px] py-2 rounded-[7px] border-[1.5px] border-[#FF8811] mt-[38px] ml-auto text-center">
+        <span className="font-[Oswald] font-bold text-[16px] text-[#FF8811]">
+          Read  More &gt;
+        </span>
+      </Link>
     </div>
   );
 };
@@ -66,7 +67,7 @@ const LatestNews = async () => {
       <div
         className={`flex flex-col justify-center gap-10 w-10/12 mx-auto md:flex-row md:items-center md:mb-36 md:w-10/12 md:mx-auto md:place-content-between`}
       >
-        {news.map((news) => {
+        {exists&&news.map((news) => {
           return <NewsCard {...news} />;
         })}
       </div>

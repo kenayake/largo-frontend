@@ -2,7 +2,7 @@
 
 import SwiperCore, { Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -71,17 +71,17 @@ const NewsListCard = (news) => {
   return (
     <div className="flex justify-between mb-10 md:w-[48%]">
       <div className="flex flex-row justify-center">
-        <Link href="/news/[slug]" as="/news/news-list-card">
+        <Link href={`/news/${news.title}`}>
           <img
             src={news.image}
-            className="w-[150px] h-[100px] rounded md:w-[22vw] md:h-[17vh] xl:w-[11vw] lg:h-[19vh] object-cover"
+            className="w-[150px] h-[100px] rounded md:w-[22vw] md:h-[17vh] xl:w-[22vw] lg:h-[19vh] object-cover"
           />
         </Link>
         <div className="ml-5 flex flex-col">
           <p className="font-light text-xs tracking-[2%] text-white/[.37] mt-1">
             {moment(news.uploadDate.toDate().toUTCString()).format("LLL")}
           </p>
-          <Link href="/news/[slug]" as="/news/news-list-card">
+          <Link href={`/news/${news.title}`}>
             <p className="font-normal text-sm text-justify text-white md:text-base lg:text-xl xl">
               {news.title}
             </p>
@@ -126,9 +126,15 @@ const CollabCard = () => (
   </div>
 );
 
-const NewsCollab = async () => {
-  // const [news, exists] = await getNews({ max: 3 });
-  const [news, exists] = await getNews();
+const NewsCollab = () => {
+  const [newsState, setNews] = useState([[],false]);
+
+  useEffect(() => {
+    (async () => await getNews().then((data) => setNews(data)))();
+  }, []);
+
+  const [news, exists] = newsState
+
   return (
     <section className="mx-auto">
       <div className="w-10/12 mx-auto">
@@ -143,10 +149,11 @@ const NewsCollab = async () => {
           <h1 className="mb-1 text-xl text-[#FF8811] lg:text-3xl">All News</h1>
           <hr className="w-[100%] mb-4 h-0.5 mx-auto bg-[#D38E0C] border-0 md:my-3" />
           <div className="flex-row justify-between md:flex flex-wrap">
-            {news.map((news, index) => {
-              return <NewsListCard {...news} />;
-              // <NewsListCard news={JSON.parse(JSON.stringify(news))} />;
-            })}
+            {exists &&
+              news.map((news, index) => {
+                return <NewsListCard {...news} />;
+                // <NewsListCard news={JSON.parse(JSON.stringify(news))} />;
+              })}
             {/* <NewsListCard />
             <NewsListCard />
             <NewsListCard />
