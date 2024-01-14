@@ -36,7 +36,7 @@ export function ImageCarousel({ images }) {
           },
           1024: {
             slidesPerView: 4,
-            spaceBetween: 50
+            spaceBetween: 50,
           },
           1280: {
             slidesPerView: 4,
@@ -68,7 +68,11 @@ export function ImageCarousel({ images }) {
             );
           })}
       </Swiper>
-      <button className="absolute top-[47%] left-[2%] md:left-[5%] z-20" ref={prevRef} type="button">
+      <button
+        className="absolute top-[47%] left-[2%] md:left-[5%] z-20"
+        ref={prevRef}
+        type="button"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="35"
@@ -80,7 +84,11 @@ export function ImageCarousel({ images }) {
           <path fill="#D38E0C" d="M35 .625v43.75L.625 22.5 35 .625Z" />
         </svg>
       </button>
-      <button className="absolute top-[47%] right-[1%] md:right-[5%] z-20" ref={nextRef} type="b">
+      <button
+        className="absolute top-[47%] right-[1%] md:right-[5%] z-20"
+        ref={nextRef}
+        type="b"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="35"

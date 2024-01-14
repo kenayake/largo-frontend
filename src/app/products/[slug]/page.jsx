@@ -15,8 +15,8 @@ const ProductDetail = async ({ params }) => {
   const [product, exists] = await getProducts({
     productId: decodeURI(params.slug),
   });
-
   console.log(product);
+
   const whatsappIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
