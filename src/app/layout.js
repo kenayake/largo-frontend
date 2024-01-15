@@ -1,4 +1,4 @@
-import "./globals.css";
+import "@/app/globals.css";
 import { Oswald } from "next/font/google";
 import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/footer/footer";

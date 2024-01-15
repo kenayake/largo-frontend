@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   useForm,
   useFieldArray,
@@ -13,10 +13,15 @@ import ArrayFields from "../components/forms/arrayfield";
 import TextInput from "../components/forms/textinput";
 import Select from "../components/forms/select";
 import FileInput from "../components/forms/fileinput";
-import { uploadImage } from "@/lib/firebase/upload_image";
 import { addEbike } from "@/lib/firebase/add_document";
+import SubmitButton from "../components/forms/button";
+import { useAuthContext } from "../components/context/authcontext";
 
 export default function AddProductForm() {
+  const user = useAuthContext()
+
+  useEffect(() => console.log(user), [user]);
+
   const {
     register,
     unregister,
@@ -33,38 +38,37 @@ export default function AddProductForm() {
     switch (data.type) {
       case "ebike":
         await addEbike(data);
+
         break;
 
       default:
-        // Testing stuff
-        await new Promise((r) => setTimeout(r, 2000));
-        const error = Math.round(Math.random());
-        // if (error) throw "error";
         break;
     }
   };
-  console.log(errors);
 
   useEffect(() => {
     if (isSubmitting) console.log("Submitting...");
-    else console.log("done Submitting")
+    else console.log("done Submitting");
   }, [isSubmitting]);
 
   useEffect(() => {
     if (type !== "ebike")
-      unregister([
-        "specification",
-        "additionalFeatures",
-        "additionalImages",
-        "colorOptions",
-      ],{keepValues: true});
+      unregister(
+        [
+          "specification",
+          "additionalFeatures",
+          "additionalImages",
+          "colorOptions",
+        ],
+        { keepValues: true }
+      );
   }, [type]);
 
   return (
     <div className="my-[10%] mx-[10%] ">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-4 p-10 border-2 rounded-lg"
+        className="space-y-4 p-10 border-2 rounded-lg border-gray-600"
       >
         <TextInput
           name={"productName"}
@@ -236,9 +240,7 @@ export default function AddProductForm() {
           </>
         )}
 
-        <button type="submit" className="border rounded-lg px-2 py-1 mt-5" disabled={isSubmitting}>
-          Submit
-        </button>
+        <SubmitButton isSubmitting={isSubmitting} />
       </form>
     </div>
   );
