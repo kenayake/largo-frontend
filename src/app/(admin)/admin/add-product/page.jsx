@@ -70,6 +70,7 @@ export default function AddProductForm() {
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-4 p-10 border-2 rounded-lg border-gray-600"
       >
+      <h1 className="text-3xl w-full text-center">ADD PRODUCT</h1>
         <TextInput
           name={"productName"}
           register={register("name", { required: true, maxLength: 80 })}
@@ -83,7 +84,6 @@ export default function AddProductForm() {
         />
 
         <FileInput
-          labelText={"Product Image"}
           name={"image"}
           register={register("image", { required: true })}
           accept={"image/*"}
@@ -220,8 +220,7 @@ export default function AddProductForm() {
                 errors={errors}
                 render={(name, index) => (
                   <FileInput
-                    labelText={`Additional Image ${index + 1}`}
-                    name={name}
+                    name={`Additional Image ${index + 1}`}
                     accept={"image/*"}
                     register={register(`${name}.${index}.value`, {
                       required: true,
