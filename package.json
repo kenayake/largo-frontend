@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tinymce/tinymce-react": "^4.3.2",
     "eslint": "^8.37.0",
     "firebase": "^10.5.2",
     "mongodb": "^5.1.0",
@@ -24,6 +25,7 @@
     "swiper": "^9.4.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
     "@types/eslint": "^8.44.2",
     "@types/lodash": "^4.14.202",
     "@types/react-color": "^3.0.10",
