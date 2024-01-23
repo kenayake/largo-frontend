@@ -39,3 +39,16 @@ export async function addEbike(data) {
 
   await addDocument("products", data.name, data);
 }
+
+export async function addNews(data) {
+  const image = data.image[0];
+
+  const imageUrl = await uploadImage(
+    `news_images/${data.title}/${image.name}`,
+    image
+  );
+
+  data = { ...data, image: imageUrl, uploadDate: new Date };
+
+  await addDocument("news", data.title, data)
+}
