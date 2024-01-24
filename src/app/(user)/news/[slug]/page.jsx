@@ -37,7 +37,7 @@ export default async function NewsDetail({ params }) {
     <>
       <div className="w-10/12 mx-auto flex flex-col pb-5 lg:flex-row">
         {/* News Page Content */}
-        <div className="w-full mt-[13vh] md:mt-[14vh] lg:mt-[14vh] lg:pr-7 lg:pb-10 lg:w-3/4">
+        {exists && <div className="w-full mt-[13vh] md:mt-[14vh] lg:mt-[14vh] lg:pr-7 lg:pb-10 lg:w-3/4">
           <div className="bg-[#D38E0C] w-[100%] mx-auto rounded-md p-4 md:p-8">
             <div className="bg-[#17303F] w-32 md:py-1 md:px-9 rounded-md text-center text-base">
               Trending
@@ -46,7 +46,9 @@ export default async function NewsDetail({ params }) {
               {news.title}
             </p>
             <div className="flex flex-row mt-4 justify-between md:mt-3">
-              {news.writer&& <div className="text-sm">Written by {news.writer}</div>}
+              {news.writer && (
+                <div className="text-sm">Written by {news.writer}</div>
+              )}
               <div className="text-sm">
                 {moment(news.uploadDate.toDate().toUTCString()).format("LLL")}
               </div>
@@ -73,7 +75,7 @@ export default async function NewsDetail({ params }) {
           <p className="text-white text-sm font-light text-justify md:text-base">
             {news.description}
           </p>
-        </div>
+        </div>}
         <div className="lg:w-1/4 w-full lg:mt-[11vh] ">
           <h1 className="text-xl text-[#FF8811] mt-7 mb-2 lg:text-[2vw]">
             Related News
