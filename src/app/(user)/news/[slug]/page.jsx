@@ -2,6 +2,7 @@
 import React from "react";
 import { getNews } from "@/lib/firebase/get_document";
 import moment from "moment/moment";
+import DOMPurify from "isomorphic-dompurify";
 
 const RelatedCard = () => (
   <div>
@@ -72,9 +73,8 @@ export default async function NewsDetail({ params }) {
 
           <hr className="w-[40vw] h-1 mx-auto my-4 bg-[#D38E0C] border-0 rounded md:my-3" />
 
-          <p className="text-white text-sm font-light text-justify md:text-base">
-            {news.description}
-          </p>
+          <div className="prose prose-invert font-light prose-sky min-w-fit" dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(news.description)}}>
+          </div>
         </div>}
         <div className="lg:w-1/4 w-full lg:mt-[11vh] ">
           <h1 className="text-xl text-[#FF8811] mt-7 mb-2 lg:text-[2vw]">
