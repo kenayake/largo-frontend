@@ -13,6 +13,8 @@
     "eslint": "^8.37.0",
     "eslint-config-next": "^14.0.4",
     "firebase": "^10.5.2",
+    "flowbite": "^2.2.1",
+    "flowbite-react": "^0.7.2",
     "isomorphic-dompurify": "^2.3.0",
     "moment": "^2.29.4",
     "mongodb": "^5.1.0",
