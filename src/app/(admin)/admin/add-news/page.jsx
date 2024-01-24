@@ -34,9 +34,6 @@ function DescriptionEditor({ control }) {
               skin: "oxide-dark",
               statusbar: false,
               content_css: "dark",
-              content_style:
-                "@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');" +
-                "body { color: #DFD3BB; font-family: 'Oswald', sans-serif; }",
             }}
             value={value}
             onEditorChange={onChange}
