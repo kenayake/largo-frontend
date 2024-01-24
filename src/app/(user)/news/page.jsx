@@ -71,10 +71,10 @@ const NewsListCard = (news) => {
   return (
     <div className="flex justify-between mb-10 md:w-[48%]">
       <div className="flex flex-row justify-center">
-        <Link href={`/news/${news.title}`}>
+        <Link href={`/news/${news.title}`} className=" w-28 aspect-square h-full">
           <img
             src={news.image}
-            className="w-[150px] h-[100px] rounded md:w-[22vw] md:h-[17vh] xl:w-[22vw] lg:h-[19vh] object-cover"
+            className="rounded object-cover"
           />
         </Link>
         <div className="ml-5 flex flex-col">
