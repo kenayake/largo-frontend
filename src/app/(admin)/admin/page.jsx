@@ -1,18 +1,24 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Avatar, Button, Sidebar } from "flowbite-react";
 import { useAuthContext } from "./components/context/authcontext";
 import { getAuth, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import ProductList from "./admin_dashboard/product_list";
+import NewsList from "./admin_dashboard/news_list";
 
 export default function AdminPage() {
   const user = useAuthContext();
   const auth = getAuth();
   const router = useRouter();
+
+  const pages = [<NewsList />, <ProductList />];
+
+  const [currPage, setCurrPage] = useState(0);
+
   return (
     <div className="h-screen w-full">
-      <Sidebar className="fixed"
-      >
+      <Sidebar className="fixed">
         <Sidebar.Items className="mt-10">
           <Sidebar.ItemGroup className="flex flex-col items-center">
             {user && (
@@ -29,12 +35,12 @@ export default function AdminPage() {
             )}
           </Sidebar.ItemGroup>
           <Sidebar.ItemGroup>
-            <Sidebar.Item onClick={()=>console.log("gayy")}>News</Sidebar.Item>
-            <Sidebar.Item href="#">Products</Sidebar.Item>
+            <Sidebar.Item onClick={() => setCurrPage(0)}>News</Sidebar.Item>
+            <Sidebar.Item onClick={() => setCurrPage(1)}>Products</Sidebar.Item>
           </Sidebar.ItemGroup>
         </Sidebar.Items>
       </Sidebar>
-      <div className="sm:ml-64 h-full w-full"></div>
+      <div className="sm:ml-64 h-full">{pages[currPage]}</div>
     </div>
   );
 }
