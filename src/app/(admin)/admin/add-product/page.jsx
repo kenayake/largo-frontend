@@ -16,9 +16,12 @@ import FileInput from "../components/forms/fileinput";
 import { addEbike } from "@/lib/firebase/add_document";
 import SubmitButton from "../components/forms/button";
 import { useAuthContext } from "../components/context/authcontext";
+import { useRouter } from "next/navigation";
 
 export default function AddProductForm() {
   const user = useAuthContext()
+
+  const router = useRouter()
 
   useEffect(() => console.log(user), [user]);
 
@@ -38,7 +41,7 @@ export default function AddProductForm() {
     switch (data.type) {
       case "ebike":
         await addEbike(data);
-
+        router.push('/admin')
         break;
 
       default:

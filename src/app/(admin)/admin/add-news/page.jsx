@@ -9,6 +9,7 @@ import { Editor } from "@tinymce/tinymce-react";
 import { useForm, Controller } from "react-hook-form";
 import SubmitButton from "../components/forms/button";
 import { addNews } from "@/lib/firebase/add_document";
+import { useRouter } from "next/navigation";
 
 function DescriptionEditor({ control }) {
   return (
@@ -53,6 +54,7 @@ function DescriptionEditor({ control }) {
 
 export default function AddNewsPage() {
   const user = useAuthContext();
+  const router = useRouter()
 
   const {
     register,
@@ -63,6 +65,7 @@ export default function AddNewsPage() {
 
   const onSubmit = async (data) => {
     await addNews(data)
+    router.push('/admin')
   };
 
   return (
