@@ -15,10 +15,6 @@ export default function ProductList() {
 
   const [products, exists] = productState;
 
-  useEffect(() => {
-    console.log(products);
-  }, [productState]);
-
   const filterSearch = (obj) => {
     if (searchVal) {
       for (const key in obj) {

@@ -15,10 +15,6 @@ export default function NewsList() {
 
   const [news, exists] = newsState;
 
-  useEffect(() => {
-    console.log(news);
-  }, [newsState]);
-
   const filterSearch = (obj) => {
     if (searchVal) {
       for (const key in obj) {

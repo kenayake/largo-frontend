@@ -23,8 +23,6 @@ export default function AddProductForm() {
 
   const router = useRouter()
 
-  useEffect(() => console.log(user), [user]);
-
   const {
     register,
     unregister,
