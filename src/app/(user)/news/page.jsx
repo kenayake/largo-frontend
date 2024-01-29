@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { getNews } from "@/lib/firebase/get_document";
 import moment from "moment/moment";
+import DOMPurify from "isomorphic-dompurify";
 
 SwiperCore.use([Pagination, Autoplay]);
 
@@ -71,11 +72,11 @@ const NewsListCard = (news) => {
   return (
     <div className="flex justify-between mb-10 md:w-[48%]">
       <div className="flex flex-row justify-center">
-        <Link href={`/news/${news.title}`} className=" w-28 aspect-square h-full">
-          <img
-            src={news.image}
-            className="rounded object-cover"
-          />
+        <Link
+          href={`/news/${news.title}`}
+          className=" w-40 aspect-square h-full flex items-center"
+        >
+          <img src={news.image} className="rounded object-cover" />
         </Link>
         <div className="ml-5 flex flex-col">
           <p className="font-light text-xs tracking-[2%] text-white/[.37] mt-1">
@@ -86,9 +87,12 @@ const NewsListCard = (news) => {
               {news.title}
             </p>
           </Link>
-          <p className=" font-light text-xs tracking-[2%] text-justify text-white/50 mb-1 mt-1 lg:text-sm">
-            {news.shortDescription}
-          </p>
+          <p
+            className=" font-light prose prose-invert text-xs tracking-[2%] text-justify text-white/50 mb-1 mt-1 lg:text-sm h-20 overflow-clip"
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(news.description),
+            }}
+          ></p>
           <Link href={`/news/${news.title}`}>
             <button className="ml-auto">
               <p className="justify-end items-center font-bold text-sm text-[#FF8811] underline md:mt-[1vh] lg:mt-[1vh]">
@@ -127,13 +131,13 @@ const CollabCard = () => (
 );
 
 const NewsCollab = () => {
-  const [newsState, setNews] = useState([[],false]);
+  const [newsState, setNews] = useState([[], false]);
 
   useEffect(() => {
     (async () => await getNews().then((data) => setNews(data)))();
   }, []);
 
-  const [news, exists] = newsState
+  const [news, exists] = newsState;
 
   return (
     <section className="mx-auto">
