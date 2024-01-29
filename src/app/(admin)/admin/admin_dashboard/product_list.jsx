@@ -23,8 +23,8 @@ export default function ProductList() {
     if (searchVal) {
       for (const key in obj) {
         if (key === "name" || key === "type") {
-          console.log(obj.key.toLowerCase(), searchVal);
-          if (obj.key.toLowerCase().includes(searchVal)) {
+          console.log(obj[key].toLowerCase(), searchVal);
+          if (obj[key].toLowerCase().includes(searchVal)) {
             return true;
           }
         }
@@ -74,7 +74,7 @@ export default function ProductList() {
           </div>
         </div>
 
-        <Button color="blue">Add Product</Button>
+        <Button color="blue" href="/admin/add-product">Add Product</Button>
       </div>
       <Table hoverable>
         <Table.Head>
